@@ -6,10 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,8 +23,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_name',
         'email',
         'phone_number',
-        'password',
         'user_level',
+        'user_status',
+        'password',
     ];
 
     /**
@@ -36,15 +39,42 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    static public function getAdmins()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return DB::table('users')
+        ->select('users.*')
+        ->where('user_level', 1)
+        ->where('user_status', 1)
+        ->orderByDesc('id')
+        ->get();
+    }
+
+    static public function getUsers()
+    {
+        return DB::table('users')
+        ->select('users.*')
+        ->where('user_level', 2)
+        ->where('user_status', 1)
+        ->orderByDesc('id')
+        ->get();
+    }
+
+    public function productReviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
+
+    public function hasReviewedProduct($product_id)
+    {
+        return $this->productReviews()->where('product_id', $product_id)->exists();
     }
 }

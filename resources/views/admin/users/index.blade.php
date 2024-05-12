@@ -1,55 +1,45 @@
-<x-admin-layout class="Users">
-    <x-admin-header 
-        header_title="Users" 
-        :total_count="count($users)"
-    />
+<x-admin>
+    <div class="container users">
+        @include('admin.partials.users_navbar')
+        
+        <div class="header">
+            <h1>Users <span>({{ $users->count() }})</span></h1>
+            @include('partials.js_search')
+        </div>
 
-    <div class="body">
-        <table>
-            <thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Action</th>
-            </thead>
+        @include('partials.messages')
 
-            <tbody>
-                @if(count($users) > 0)
-                    @php $id = 1 @endphp
-                    @foreach($users as $user)
+        <div class="body">
+            <table>
+                <thead>
                     <tr>
-                        <td>
-                            <a href="#">
-                                {{ $id++ }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ $user->first_name .' '. Auth::user()->last_name }} 
-                            {!! $user->user_level == 2 ? '<span class="td_span">admin</span>' : '' !!}
-                        </td>
+                        <th>Names</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>User Level</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                    <tr class="searchable">
+                        <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone_number }}</td>
+                        <td>{{ $user->user_level == 1 ? 'Admin':'User' }}</td>
+                        <td class="{{ $user->user_status == 1 ? '' : 'text-danger bold' }}">{{ $user->user_status == 1 ? 'Active' : 'Inactive'}} </td>
                         <td class="actions">
                             <div class="action">
-                                <form id="deleteForm_{{ $user->id }}" action="{{ route('users.destroy', ['user' => $user->id]) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button type="button" onclick="deleteItem({{ $user->id }}, 'user');">
-                                        <i class="fas fa-trash-alt delete"></i>
-                                    </button>
-                                </form>
+                                <a href="{{ route('user.edit', ['user' => $user->id]) }}">
+                                    <i class="fas fa-pencil-alt update"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>
                     @endforeach
-                @else
-                    <tr>
-                        <td colspan="5">No users yet</td>
-                    </tr>
-                @endif
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-</x-admin-layout>
+</x-admin>

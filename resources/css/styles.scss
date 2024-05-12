@@ -1,13 +1,24 @@
-@import "__mixins";
-@import "__global";
-@import "__forms";
+@import '_variables';
+@import '_global';
+@import '_mixins';
+@import '_forms';
+@import '_cards';
 
-@import "_navbar";
-@import "_footer";
-@import "_alerts";
-@import "_admin_aside";
+// Partials
+@import 'navbar';
+@import 'footer';
+@import 'alerts';
 
-@import "Contact";
-@import "Authentication";
-@import "Dashboard";
-@import "Admin";
+// Pages
+@import 'Authentication';
+@import 'Homepage';
+@import 'About';
+@import 'Shop';
+@import 'Contactpage';
+@import 'Blogs';
+@import 'Cart';
+@import 'Admin';
+@import 'Dashboard';
+@import 'DeliveryLocations';
+@import 'Products';
+@import 'Order';

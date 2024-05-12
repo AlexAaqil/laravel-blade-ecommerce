@@ -1,4 +1,5 @@
-<x-general-layout>
+<x-app-layout>
+@include('partials.navbar')
     <div class="profile_update">
         @include('partials.messages')
 
@@ -107,8 +108,7 @@
         </div>
     </div>
 
-    <x-slot name="javascript">
-        <script src={{ asset('assets/js/sweetalert.js') }}></script>
+    <x-sweetalert>
         <script>
             function checkPasswordAndDelete() {
                 const password = document.getElementById("password").value.trim();
@@ -155,6 +155,5 @@
                 }
             });
         </script>
-    </x-slot>
-</x-general-layout>
-    
+    </x-jquery>
+</x-app-layout>

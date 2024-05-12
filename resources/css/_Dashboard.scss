@@ -1,63 +1,104 @@
-.UserDashboard {
-    .container {
-        h1 {
-            font-size: 1.35em;
-        }
+.Admin_dashboard {
+    .hero {
+        margin: 0 0 0.5em;
 
-        .custom_form {
-            margin: 1em 0;
-            display: flex;
-            align-items: center;
+        p {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    }
+
+    .stats {
+        @include grid(6);
+
+        .stat {
+            background: #cadaff;
+            border-radius: 8px;
+            padding: 6px 8px;
+            display: grid;
+            grid-template-columns: 20% auto;
             gap: 1em;
+            align-items: center;
+
+            .icon {
+                @include flex_center;
+                font-size: 1.1em;
+                background: #7c9fec;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                padding: 16px;
+            }
+
+            .text {
+                a {
+                    text-decoration: none;
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .analytics_wrapper {
+        margin: 1.5em 0;
+        .analytics {
+            @include grid(4);
+    
+            .analytic {
+                background: rgb(198, 250, 193);
+                border-radius: 8px;
+                padding: 6px 12px;
+                display: grid;
+                grid-template-columns: auto 20%;
+                align-items: center;
+    
+                .text {
+                    p {
+                        &:first-of-type {
+                            font-size: 1.45em;
+                            font-weight: bold;
+                        }
+    
+                        font-size: 0.8em;
+                    }
+                }
+    
+                .icon {
+                    text-align: center;
+                }
+            }
         }
     }
 }
 
-.Admin {
-    .Dashboard {
-        .hero {
-            h1 {
-                font-size: 1.2em;
+@media screen and (width >= 726px) {
+    .Admin_dashboard {
+        .analytics_wrapper {
+            .custom_form {
+                display: flex;
+                justify-content: flex-end;
+
+                form {
+                    width: 15%;
+                }
             }
         }
+    }
+}
 
-        .stats {
-            @include grid(6);
-            margin: 1em 0;
 
-            .stat {
-                background: rgb(222, 222, 253);
-                padding: 8px 16px;
-                border-radius: 8px;
-                display: grid;
-                grid-template-columns: 30px auto;
-                align-items: center;
-                gap: 0.8em;
+@media screen and (width >= 726px) {
+    .charts {
+        margin: 0 0 4em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
 
-                .icon {
-                    background: #a3a2fa;
-                    height: 30px;
-                    width: 30px;
-                    border-radius: 50%;
-                    padding: 4px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
+        .chart {
+            height: 40vh;
 
-                .text {
-                    display: grid;
-
-                    a {
-                        text-decoration: none;
-                        color: #000;
-                        font-size: 0.9em;
-                    }
-
-                    span {
-                        font-size: 1.2em;
-                    }
-                }
+            h2 {
+                font-size: 1.2em;
             }
         }
     }

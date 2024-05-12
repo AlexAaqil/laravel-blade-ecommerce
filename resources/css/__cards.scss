@@ -1,0 +1,67 @@
+.card_wrapper {
+    @include grid(3);
+
+    .card {
+        box-shadow: 2px 2px 8px #000;
+        border-radius: 8px;
+
+        .image {
+            height: 200px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    
+        .text {
+            padding: 4px 8px 6px;
+
+            .extra_details {
+                margin: 0 0 0.2em;
+
+                span {
+                    font-size: 0.75em;
+                    color: grey;
+                    
+                    &:not(:last-of-type) {
+                        margin-right: 12px;
+                    }
+                }
+            }
+
+            .content {
+                display: grid;
+                grid-template-columns: auto 15%;
+                gap: 0.5em;
+                align-items: center;
+
+                .details {
+                    .title {
+                        a {
+                            text-decoration: none;
+                            color: #000;
+                            font-weight: bold;
+                            font-size: 1.2em;
+                        }
+                    }
+    
+                    .content {
+                        margin: 0.2em 0;
+                    }
+                }
+    
+                .actions {
+                    text-align: center;
+                    i {
+                        font-size: 1.45em;
+                    }
+    
+                    .delete {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}

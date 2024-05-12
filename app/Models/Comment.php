@@ -10,11 +10,9 @@ class Comment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
         'phone_number',
         'message',
-        'is_visible',
-        'ordering',
     ];
 }

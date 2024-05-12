@@ -1,44 +1,39 @@
-<x-general-layout class="Contact">
+<x-app-layout>
+@include('partials.navbar')
+<main class="Contact">
     <div class="container">
-        <div class="text">
-            <p>{{ config('app.phone_number') }}</p>
-            <p>{{ config('app.email_address') }}</p>
-            <p class="hours">
-                <span>Mon - Fri</span>
-                <span>08:00 AM - 06:00 PM</span>
-            </p>
+        @include('partials.messages')
+        <div class="contact_details">
+            <p>+254 711 894 267</p>
+            <p>info@shea254.com</p>
         </div>
 
-        <div class="custom_form">
-            <form action="{{ route('comments.store') }}" method="post">
-                @csrf
+        <div class="contact_form">
+            <div class="custom_form">
+                <form action="{{ route('comments.store') }}" method="post">
+                    @csrf
 
-                <div class="input_group">
-                    <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="Full Name" value="{{ old('name') }}">
-                    <span class="inline_alert">{{ $errors->first('name') }}</span>
-                </div>
-
-                <div class="input_group">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" placeholder="Email Address" value="{{ old('email') }}">
-                    <span class="inline_alert">{{ $errors->first('email') }}</span>
-                </div>
-
-                <div class="input_group">
-                    <label for="phone_number">Phone Number</label>
-                    <input type="text" name="phone_number" id="phone_number" placeholder="254746055487" value="{{ old('phone_number') }}">
-                    <span class="inline_alert">{{ $errors->first('phone_number') }}</span>
-                </div>
-
-                <div class="input_group">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="7" placeholder="Enter your message"></textarea>
-                    <span class="inline_alert">{{ $errors->first('message') }}</span>
-                </div>
-
-                <button type="submit">Send Message</button>
-            </form>
+                    <div class="input_group">
+                        <input type="text" name="full_name" id="full_name" placeholder="Full Name" value="{{ old('full_name') }}" autofocus />
+                        <span class="inline_alert">{{ $errors->first('full_name') }}</span>
+                    </div>
+                    <div class="input_group">
+                        <input type="email" name="email_address" id="email_address" placeholder="Email Address" value="{{ old('email_address') }}" />
+                        <span class="inline_alert">{{ $errors->first('email_address') }}</span>
+                    </div>
+                    <div class="input_group">
+                        <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}" />
+                        <span class="inline_alert">{{ $errors->first('phone_number') }}</span>
+                    </div>
+                    <div class="input_group">
+                        <textarea name="message" id="message" cols="30" rows="7" placeholder="Enter your message">{{ old('message') }}</textarea>
+                        <span class="inline_alert">{{ $errors->first('message') }}</span>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </div>
     </div>
-</x-general-layout>
+</main>
+@include('partials.footer')
+</x-app-layout>

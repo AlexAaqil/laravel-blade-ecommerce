@@ -1,0 +1,239 @@
+.Admin {
+    .Main {
+        .Blogs {
+            .blogs {
+                @include grid(3);
+                margin: 1em 0;
+
+                .blog {
+                    box-shadow: 2px 2px 6px grey;
+
+                    .image {
+                        height: 200px;
+                        width: 100%;
+                        background: whitesmoke;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+
+                    .text {
+                        display: grid;
+                        grid-template-columns: auto 10%;
+                        gap: 0.5em;
+                        align-items: center;
+
+                        .details {
+                            padding: 4px 8px;
+                            .title {
+                                a {
+                                    text-decoration: none;
+                                    font-size: 1.2em;
+                                }
+                            }
+                        }
+
+                        .actions {
+                            .delete {
+                                color: $danger;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .custom_form {
+                .blog_image_input {
+                    @include grid(2);
+
+                    .blog_image {
+                        height: 80px;
+                        width: 120px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Blog {
+    .Hero {
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fcfcee;
+
+        .hero_content {
+            .breadcrumb {
+                text-align: center;
+                margin: 0 0 0.5em;
+
+                a {
+                    text-decoration: none;
+                    color: #000;
+                    font-weight: bold;
+                    font-size: 0.9em;
+
+                    &:not(:last-of-type)::after {
+                        content: " > ";
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+    }
+
+    .Blogs {
+        .container {
+            .blogs {
+                h1 {
+                    text-align: center;
+                    font-size: 1.8em;
+                    margin: 0.5em 0 1em;
+                }
+
+                .blogs_wrapper {
+                    @include grid(3);
+                    gap: 2em;
+
+                    .blog {
+                        box-shadow: 2px 2px 8px #000;
+
+                        .image {
+                            height: 250px;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .text {
+                            display: grid;
+                            gap: 0.5em;
+                            padding: 4px 15px;
+
+                            .date {
+                                font-size: 0.8em;
+                            }
+
+                            .title {
+                                a {
+                                    text-decoration: none;
+                                    color: #000;
+                                    font-size: 1.1em;
+                                    font-weight: bold;
+                                }
+                            }
+
+                            .content {
+                                line-height: 1.3;
+
+                                ul,
+                                ol {
+                                    list-style-position: inside;
+                                }
+                            }
+
+                            .btn {
+                                margin: 0.5em 0;
+
+                                a {
+                                    text-decoration: none;
+                                    i {
+                                        font-size: 0.8em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .pagination {
+                    margin: 3em 0;
+                    text-align: center;
+
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                    }
+
+                    .disabled {
+                        color: grey;
+                    }
+
+                    .pagination-links {
+                        margin: 0 1em;
+
+                        a {
+                            color: grey;
+                        }
+
+                        .active {
+                            font-size: 1.3em;
+                            font-weight: bold;
+                            color: green;
+                        }
+                    }
+                }
+            }
+        }
+        .blog_details {
+            .image {
+                height: 75vh;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+
+            .container {
+                width: 75%;
+                margin: auto;
+
+                .text {
+                    .date {
+                        font-size: 0.7em;
+                    }
+
+                    h1 {
+                        margin: 0.5em 0;
+                    }
+
+                    .content {
+                        p {
+                            line-height: 1.5;
+                        }
+
+                        ul,
+                        ol {
+                            list-style-position: inside;
+                        }
+                    }
+
+                    .btn {
+                        margin: 1em 0;
+                    }
+                }
+            }
+        }
+    }
+}

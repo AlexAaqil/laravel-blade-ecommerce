@@ -1,0 +1,46 @@
+$danger: rgb(235, 4, 4);
+$success: rgb(2, 168, 29);
+$warning: rgb(194, 128, 5);
+
+.alert {
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 10vh;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 10;
+}
+
+.Admin {
+    .alert {
+        top: 0;
+    }
+}
+
+.alert-danger {
+    background: $danger;
+}
+
+.alert-success {
+    background: $success;
+}
+
+.alert-warning {
+    background: $warning;
+}
+
+.inline_alert {
+    margin: 0.1em 0 0;
+    font-weight: bold;
+    color: $danger;
+}
+
+.inline_alert_success {
+    padding: 0.5em;
+    margin: 0.5em 0;
+    color: $success;
+}
