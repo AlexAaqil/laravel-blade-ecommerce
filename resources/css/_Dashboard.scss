@@ -1,0 +1,64 @@
+.UserDashboard {
+    .container {
+        h1 {
+            font-size: 1.35em;
+        }
+
+        .custom_form {
+            margin: 1em 0;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+    }
+}
+
+.Admin {
+    .Dashboard {
+        .hero {
+            h1 {
+                font-size: 1.2em;
+            }
+        }
+
+        .stats {
+            @include grid(6);
+            margin: 1em 0;
+
+            .stat {
+                background: rgb(222, 222, 253);
+                padding: 8px 16px;
+                border-radius: 8px;
+                display: grid;
+                grid-template-columns: 30px auto;
+                align-items: center;
+                gap: 0.8em;
+
+                .icon {
+                    background: #a3a2fa;
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                    padding: 4px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .text {
+                    display: grid;
+
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                        font-size: 0.9em;
+                    }
+
+                    span {
+                        font-size: 1.2em;
+                    }
+                }
+            }
+        }
+    }
+}

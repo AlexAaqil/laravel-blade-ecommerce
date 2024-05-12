@@ -1,0 +1,31 @@
+@mixin desktop_only {
+    display: none;
+
+    @media screen and (width >= 726px) {
+        display: block;
+    }
+}
+
+@mixin flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin grid($columns) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5em;
+
+    @media screen and (width >= 726px) {
+        grid-template-columns: repeat($columns, 1fr);
+    }
+}
+
+@mixin font_size($mobile, $desktop) {
+    font-size: $mobile;
+
+    @media screen and (width >= 726px) {
+        font-size: $desktop;
+    }
+}

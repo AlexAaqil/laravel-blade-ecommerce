@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('auth.profile', [
             'user' => $request->user(),
         ]);
     }
@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('success', ['message' => 'Profile has been updated']);
     }
 
     /**
@@ -55,6 +55,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('success', ['message' => '😢 We hate to see you go. Your account has been deleted']);
     }
 }

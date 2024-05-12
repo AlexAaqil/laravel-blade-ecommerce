@@ -1,0 +1,156 @@
+aside {
+    position: fixed;
+    border-right: 1px solid grey;
+    height: 100%;
+    padding: 4px 8px;
+    text-align: center;
+
+    
+    i {
+        font-size: 1.5em;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    
+    .active {
+        background: #000;
+        border-radius: 8px;
+        a {
+            color: #fff;
+        }
+    }
+    
+    .brand h1,
+    .text {
+        @include desktop_only;
+    }
+
+    .brand {
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2em;
+            
+            img {
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+            }
+
+            h1 {
+                font-size: 1em;
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        margin: 0.8em 0 0;
+
+        li {
+            padding: 4px;
+        }
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 2em;
+
+        .profile {
+            img {
+                $image_dimensions: 40px;
+                width: $image_dimensions;
+                height: $image_dimensions;
+                border-radius: 50%;
+            }
+        }
+
+        .logout {
+            margin: 0.5em 0 0;
+            form {
+                button {
+                    background: none;
+                    padding: unset;
+                    i {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (width >= 726px) {
+    aside {
+        text-align: left;
+
+        i {
+            font-size: 0.95em;
+        }
+
+        ul {
+            margin: 2em 0;
+
+            li {
+                border-bottom: 1px solid #ccc;
+
+                a {
+                    display: grid;
+                    grid-template-columns: 25px auto;
+                    align-items: center;
+                }
+            }
+        }
+
+        .footer {
+            left: 0;
+            width: 100%;
+            padding: 0 0 0 8px;
+
+            .profile,
+            .logout {
+                display: flex;
+                align-items: center;
+            }
+
+            .profile {
+                gap: 0.3em;
+
+                img {
+                    $image_dimensions: 35px;
+                    width: $image_dimensions;
+                    height: $image_dimensions;
+                    border: 1px solid green;
+                    padding: 2px;
+                }
+
+                span {
+                    font-size: 0.8em;
+                }
+            }
+
+            .logout {
+                justify-content: center;
+                form {
+                    button {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.2em;
+                        background-color: red;
+                        color: #fff;
+                        border-radius: 4px;
+                        padding: 6px 12px;
+
+                        i {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
