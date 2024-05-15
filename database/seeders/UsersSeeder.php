@@ -13,17 +13,22 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        $pass = Hash::make('admin_root');
-
         $users = [
             [
-                'first_name' => 'Admin',
-                'last_name' => 'Shea254',
-                'email' => 'admin@shea254.com',
-                'phone_number' => '+254 711 894 267',
-                'password' => $pass,
-                'user_level' => 1
-            ]
+                "first_name" => "Admin",
+                "last_name" => "Administrator",
+                "email" => "admin@gmail.com",
+                "phone_number" => "254746055487",
+                "password"=> Hash::make("@dmin"),
+                "user_level" => 2,
+            ],
+            [
+                "first_name" => "User",
+                "last_name" => "Test",
+                "email" => "user@gmail.com",
+                "phone_number" => "254746055487",
+                "password"=> Hash::make("p@ssword"),
+            ],
         ];
 
         foreach($users as $user) {

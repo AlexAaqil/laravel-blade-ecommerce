@@ -2,47 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\ProductCategory;
-use App\Models\ProductReview;
+use Illuminate\Http\Request;
 
 class GeneralPagesController extends Controller
 {
-    public function welcome()
-    {
-        return view('welcome');
-    }
-
     public function home()
     {
-        $featured_products = Product::where([
-            ['featured', 1],
-            // ['stock_count', '>', 0]
-        ])
-        ->orderBy('product_order')
-        ->take(4)
-        ->get();
-
-        $testimonials = ProductReview::take(3)->get();
-
-        return view('index', compact('featured_products', 'testimonials'));
+        return view("index");
     }
 
     public function about()
     {
-        return view('about');
+        return view("about");
     }
 
-    public function shop()
+    public function services()
     {
-        $products = Product::orderBy('title','asc')->get();
-        $product_categories = ProductCategory::orderBy('title','asc')->take(18)->get();
-        
-        return view('shop', compact('products', 'product_categories'));
+        return view("services");
     }
 
     public function contact()
     {
-        return view('contact');
+        return view("contact");
     }
 }

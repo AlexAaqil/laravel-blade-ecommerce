@@ -1,5 +1,6 @@
 .Authentication {
     @include flex_center;
+    height: 90vh;
 
     .container {
         .header {
@@ -11,6 +12,10 @@
                 height: 60px;
             }
         }
+    }
+
+    .verify_email {
+        text-align: center;
     }
 }
 
@@ -44,12 +49,6 @@
         .header {
             margin: 0 0 1em;
         }
-
-        .body {
-            .custom_form {
-                width: 50%;
-            }
-        }
     }
 }
 
@@ -69,6 +68,12 @@
     .profile_update {
         .section {
             width: 95%;
+
+            .body {
+                .custom_form {
+                    width: 50%;
+                }
+            }
         }
     }
 }

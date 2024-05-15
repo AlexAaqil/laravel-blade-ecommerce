@@ -16,5 +16,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-db_design.txt
-/public/uploads

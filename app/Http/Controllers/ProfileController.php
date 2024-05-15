@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('success', ['message' => 'profile has been updated']);
+        return Redirect::route('profile.edit')->with('success', ['message' => 'Profile has been updated']);
     }
 
     /**
@@ -55,6 +55,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/')->with('success', ['message' => '😢 We hate to see you go. Your account has been deleted.']);
+        return Redirect::to('/')->with('success', ['message' => '😢 We hate to see you go. Your account has been deleted']);
     }
 }

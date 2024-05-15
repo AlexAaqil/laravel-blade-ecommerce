@@ -1,10 +1,18 @@
-$(document).ready(function() {
-    $("#burgerIcon, #toggle").click(function () {
-        $("#navLinks").toggleClass("show");
-        $("#burgerIcon").toggleClass(
-            "active_burger",
-            $("#navLinks").hasClass("show")
-        );
+document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () {
+        document.querySelectorAll('.alert').forEach(function (alert) {
+            alert.remove();
+        });
+    }, 4000);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var burgerIcon = document.getElementById('burgerIcon');
+    var navLinks = document.querySelector('.nav_links');
+
+    burgerIcon.addEventListener('click', function () {
+        navLinks.classList.toggle('show');
+        burgerIcon.classList.toggle('active_burger', navLinks.classList.contains('show'));
     });
 });
 
@@ -47,7 +55,6 @@ function showConfirmationDialog(message, onConfirm) {
 
 // For forms: deleteItem(itemId, itemName);
 // For links: deleteItem(itemId, itemName, url);
-
 function deleteItem(itemId, itemName, url = null) {
     const message = `This ${itemName} will be deleted permanently!`;
 

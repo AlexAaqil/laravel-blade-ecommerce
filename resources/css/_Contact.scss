@@ -1,0 +1,55 @@
+.Contact {
+    .container {
+        @include grid(2);
+        align-items: center;
+
+        .text {
+            p {
+                @include font_size(1.25em, 2em);
+                color: rgb(53, 53, 53);
+
+                span {
+                    display: grid;
+                }
+            }
+
+            .hours {
+                margin: 0.8em 0 0;
+            }
+        }
+    }
+}
+
+.Admin {
+    .Contact {
+        .strikethrough {
+            text-decoration: line-through;
+        }
+    
+        .edit_comment {
+            border: 1px solid #d1d0d0;
+            
+            .comment {
+                background: #dcfcfa;
+                width: 75%;
+                margin: 0.5em 0 2em;
+                padding: 8px 15px;
+                border-radius: 8px 8px 32px 8px;
+                box-shadow: 2px 2px 6px #cacaca;
+            }
+
+            form {
+                padding: 10px 15px;
+            }
+        }
+    }
+    
+    @media screen and (width >= 726px) {
+        .Contact {
+            .edit_comment {
+                width: 60%;
+                margin: auto;
+            }
+        }
+    }
+}
