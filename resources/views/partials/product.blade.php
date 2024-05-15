@@ -4,6 +4,8 @@
             <img src="{{ asset('assets/images/hero.png') }}" alt="Product Title">
         </a>
 
+        <span class="percentage_discount">50% off</span>
+
         <div class="actions">
             <div class="action">
                 <form action="" method="POST">

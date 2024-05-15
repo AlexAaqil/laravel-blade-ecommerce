@@ -46,15 +46,17 @@ form textarea {
   border-radius: 4px;
   margin: 0.3em 0 0;
 }
-form .btn {
-  padding: 10px 32px;
-  font-weight: bold;
+form button {
+  cursor: pointer;
   font-size: 1em;
   border: none;
+}
+form .btn {
+  font-weight: bold;
+  padding: 10px 32px;
   border-radius: 4px;
   background: #000;
   color: #fff;
-  cursor: pointer;
 }
 
 .custom_form {
@@ -202,10 +204,21 @@ form .btn {
 }
 .card .details .content .info .title a {
   color: #000;
-  font-size: 1.25em;
+  font-size: 1.12em;
   font-weight: bold;
 }
 
+.product_card .image .percentage_discount {
+  position: absolute;
+  top: 10px;
+  left: 6.5px;
+  font-size: 0.75em;
+  background: red;
+  color: #eeeeee;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-weight: bold;
+}
 .product_card .image .actions {
   position: absolute;
   bottom: 10px;
@@ -227,7 +240,7 @@ form .btn {
 }
 .product_card .price_rating {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
 }
 .product_card .price_rating .price,
@@ -237,13 +250,16 @@ form .btn {
 }
 .product_card .price_rating .price {
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 .product_card .price_rating .price .new_price {
   color: green;
-  font-size: 1.05em;
+  font-size: 1.15em;
 }
 .product_card .price_rating .price .old_price {
   color: red;
+  font-size: 0.8em;
 }
 .product_card .price_rating .rating span {
   font-size: 0.75em;
