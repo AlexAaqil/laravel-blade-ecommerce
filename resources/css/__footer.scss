@@ -1,9 +1,10 @@
 footer {
-    padding: 16px 0 0;
     background: $theme-1;
     color: #fff;
 
     .container {
+        padding: 20px $sides_padding;
+
         a {
             text-decoration: none;
             color: #fff;

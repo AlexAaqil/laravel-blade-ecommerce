@@ -2,13 +2,16 @@
 @import "__mixins";
 @import "__global";
 @import "__forms";
+@import "__cards";
 
 @import "_navbar";
 @import "_footer";
 @import "_alerts";
 @import "_admin_aside";
 
+@import "Home";
 @import "Contact";
+@import "Product";
 @import "Authentication";
 @import "Dashboard";
 @import "Admin";

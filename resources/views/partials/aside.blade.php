@@ -1,7 +1,7 @@
 <aside>
     <div class="brand">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('assets/images/logo.jpg') }}" alt="Logo">
+            <x-app-logo />
             <h1>{{ env('APP_NAME') }}</h1>
         </a>
     </div>

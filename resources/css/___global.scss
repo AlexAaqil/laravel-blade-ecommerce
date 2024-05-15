@@ -6,5 +6,31 @@
 }
 
 .container {
-    padding: 10px 5%;
+    padding: 10px $sides_padding;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.btn,
+a .btn {
+    background: $theme-1;
+    color: $text-color;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 2px 2px 10px $theme-1;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: $theme-2;
+    }
+}
+
+a.btn {
+    text-decoration: none;
 }
