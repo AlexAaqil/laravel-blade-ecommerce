@@ -9,7 +9,7 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
-Route::get('/services', [GeneralPagesController::class, 'services'])->name('services');
+Route::get('/shop', [GeneralPagesController::class, 'shop'])->name('shop');
 Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [CommentController::class, 'store'])->name('comments.store');
 

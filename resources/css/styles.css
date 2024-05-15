@@ -701,6 +701,41 @@ aside .footer .logout form button i {
     border-radius: 8px;
   }
 }
+.Shop .search {
+  display: flex;
+  justify-content: center;
+}
+.Shop .search input {
+  padding: 8px 16px;
+  border-radius: 32px;
+  width: 30%;
+  border: 1px solid grey;
+  font-weight: bold;
+}
+.Shop .categories {
+  display: flex;
+  gap: 0.8em;
+}
+.Shop .categories a {
+  text-decoration: none;
+  background: #393e46;
+  color: #eeeeee;
+  font-size: 0.85em;
+  padding: 2px 8px;
+  border-radius: 16px;
+}
+.Shop .Products .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  gap: 2em 1.5em;
+}
+@media screen and (width >= 726px) {
+  .Shop .Products .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .Contact .container {
   display: grid;
   grid-template-columns: 1fr;

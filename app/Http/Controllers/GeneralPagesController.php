@@ -16,9 +16,9 @@ class GeneralPagesController extends Controller
         return view("about");
     }
 
-    public function services()
+    public function shop()
     {
-        return view("services");
+        return view("shop");
     }
 
     public function contact()
