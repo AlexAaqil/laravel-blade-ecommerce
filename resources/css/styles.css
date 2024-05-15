@@ -268,7 +268,7 @@ nav .burger_menu {
 }
 footer {
   padding: 16px 0 0;
-  background: hsl(238, 38%, 16%);
+  background: #222831;
   color: #fff;
 }
 footer .container a {
@@ -287,6 +287,8 @@ footer .container .branding .image {
 footer .container .branding .image img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 footer .container .branding h1 {
   font-size: 1.25em;

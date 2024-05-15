@@ -2,7 +2,7 @@
     <div class="container">
         <div class="branding">
             <div class="image">
-                <img src="{{ asset('assets/images/logo.png') }}" alt="Logo">
+                <x-app-logo />
             </div>
             <h1>{{ env('APP_NAME') }}</h1>
             <p>Some cool slogan.</p>

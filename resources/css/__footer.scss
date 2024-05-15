@@ -1,6 +1,6 @@
 footer {
     padding: 16px 0 0;
-    background: hsl(238, 38%, 16%);
+    background: $theme-1;
     color: #fff;
 
     .container {
@@ -23,6 +23,7 @@ footer {
                 img {
                     width: 100%;
                     height: 100%;
+                    object-fit: cover;
                 }
             }
 
