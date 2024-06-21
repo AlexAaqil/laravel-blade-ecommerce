@@ -33,7 +33,7 @@
 
     <section class="Blogs">
         <div class="container">
-            <h1>The Latest News</h1>
+            <h1>The Latest Blogs</h1>
 
             <div class="blogs">
                 @include('partials.blog')
