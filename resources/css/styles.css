@@ -717,26 +717,30 @@ aside .footer .logout form button i {
     border-radius: 8px;
   }
 }
-.Shop .search {
+.Shop .Header {
+  margin: 0.5em 0 0;
+}
+.Shop .Header .container {
   display: flex;
   justify-content: center;
 }
-.Shop .search input {
+.Shop .Header .container input {
+  width: 90%;
   padding: 8px 16px;
   border-radius: 32px;
-  width: 30%;
   border: 1px solid grey;
   font-weight: bold;
 }
-.Shop .categories {
+.Shop .Categories .container {
   display: flex;
-  gap: 0.8em;
+  flex-wrap: wrap;
+  gap: 0.4em;
 }
-.Shop .categories a {
+.Shop .Categories .container a {
   text-decoration: none;
   background: #393e46;
   color: #eeeeee;
-  font-size: 0.85em;
+  font-size: 0.9em;
   padding: 2px 8px;
   border-radius: 16px;
 }
@@ -752,6 +756,11 @@ aside .footer .logout form button i {
   }
 }
 
+@media screen and (width >= 726px) {
+  .Shop .Header .container input {
+    width: 30%;
+  }
+}
 .Contact .container {
   display: grid;
   grid-template-columns: 1fr;
