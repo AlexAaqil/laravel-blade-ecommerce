@@ -44,5 +44,5 @@
             @include('partials.product')
             @include('partials.product')
         </div>
-    </div>
+    </section>
 </x-general-layout>
