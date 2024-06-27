@@ -1,1 +1,0 @@
-<img src="{{ asset('assets/images/default_image.jpg') }}" alt="{{ env('APP_NAME') }} Logo">
