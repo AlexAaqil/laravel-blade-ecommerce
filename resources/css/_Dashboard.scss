@@ -1,0 +1,67 @@
+$dashboard_background: #dedefd;
+
+.Admin_dashboard {
+    .Hero {
+        p {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    }
+
+    .Stats {
+        margin: 1em 0;
+        @include grid(6);
+
+        .stat {
+            border-radius: 8px;
+            padding: 6px 12px;
+            display: grid;
+            gap: 0.8em;
+            align-items: center;
+            grid-template-columns: 25px auto;
+            background: $dashboard_background;
+
+            .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                height: 28px;
+                padding: 4px;
+                border-radius: 50%;
+                background: darken($dashboard_background, $amount: 30);
+                color: $light_text;
+            }
+
+            .text {
+                display: grid;
+                gap: 0.2em;
+
+                a {
+                    font-size: 0.85em;
+                    color: $dark_text;
+                    text-decoration: none;
+                }
+
+                span {
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}
+
+.UserDashboard {
+    .container {
+        h1 {
+            font-size: 1.35em;
+        }
+
+        .custom_form {
+            margin: 1em 0;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+    }
+}

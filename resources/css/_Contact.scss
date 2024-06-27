@@ -1,0 +1,66 @@
+.Contact {
+    .container {
+        @include grid(2);
+        align-items: center;
+
+        .text {
+            h1 {
+                @include font_size(3em, 4.5em);
+            }
+
+            p {
+                @include font_size(1.25em, 2em);
+                color: $text_faded;
+                margin: 0.8em 0 0;
+
+                span {
+                    display: grid;
+                }
+            }
+        }
+    }
+}
+
+.Admin {
+    .Contact {
+        .strikethrough {
+            text-decoration: line-through;
+        }
+    
+        .show_user_message {
+            .form_details {
+                border: 1px solid lighten($faded, 20);
+                padding: 15px;
+            }
+
+            .user_message_details {
+                .time {
+                    font-size: 0.75em;
+                    text-align: center;
+                }
+
+                .user_message {
+                    background: #dcfcfa;
+                    width: 75%;
+                    margin: 0.5em 0 2em;
+                    padding: 8px 15px;
+                    border-radius: 8px 8px 32px 8px;
+                    box-shadow: 2px 2px 6px #cacaca;
+                }
+            }
+
+            form {
+                margin: 3em 0;
+            }
+        }
+    }
+    
+    @media screen and (width >= 726px) {
+        .Contact {
+            .show_user_message {
+                width: 60% !important;
+                margin: auto;
+            }
+        }
+    }
+}

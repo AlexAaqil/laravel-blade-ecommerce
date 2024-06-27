@@ -1,0 +1,75 @@
+footer {
+    background: $theme_1;
+    padding: 16px 0 0;
+
+    * {color: $light_text;}
+
+    .container {
+        section {
+            margin: 0 0 1.5em;
+            a {
+                text-decoration: none;
+            }
+        }
+
+        .branding {
+            .image {
+                height: 100px;
+                width: 100px;
+ 
+                img {
+                    object-fit: contain;
+                }
+            }
+
+            .app_name {
+                font-size: 1.5em;
+                font-weight: bold;
+                margin: 0.2em 0;
+            }
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
+
+        .contacts {
+            p {
+                margin: 0.2em 0;
+            }
+    
+            .socials {
+                margin: 0.6em 0 0;
+                img {
+                    width: 20px;
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+
+    .copyright {
+        border-top: 1px solid $faded;
+        text-align: center;
+        padding: 8px;
+    }
+}
+
+@media screen and (width >= 726px) {
+    footer {
+        .container {
+            display: grid;
+            grid-template-columns: 30% 1fr 1fr;
+            justify-items: center;
+
+            .branding {
+                text-align: center;
+                .image {
+                    margin: auto;
+                }
+            }
+        }
+    }
+}

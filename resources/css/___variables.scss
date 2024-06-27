@@ -1,0 +1,39 @@
+$theme_1: #222831;
+$theme_2: #393e46;
+$theme_3: #00adb5;
+$theme_4: #00fff5;
+
+$light_text: #eee;
+$dark_text: #000;
+$text_faded: #2b2b2b;
+
+$faded: grey;
+$danger: red;
+$success: green;
+$warning: #c28005;
+$status: #c28005;
+
+$primary_button: #000;
+
+.center {
+    text-align: center !important;
+}
+
+.published {
+    color: $success;
+    font-weight: bold;
+}
+
+.faded {
+    color: darken($faded, 20);
+}
+
+.inactive,
+.unverified,
+.draft {
+    color: $danger;
+}
+
+.inactive_user {
+    text-decoration: line-through;
+}

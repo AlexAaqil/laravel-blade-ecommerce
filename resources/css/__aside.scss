@@ -1,0 +1,145 @@
+$aside_text_color: #000;
+
+aside {
+    height: 100%;
+    position: fixed;
+    padding: 4px 8px;
+    text-align: center;
+    border-right: 1px solid $faded;
+
+    .brand,
+    .text {
+        @include desktop_only;
+    }
+
+    i {
+        font-size: 1.5em;
+    }
+
+    a {
+        color: $aside_text_color;
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0.8em 0 0;
+
+        li {
+            padding: 4px;
+            a {
+                color: darken($faded, 30);
+            }
+        }
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 2em;
+
+        .profile {
+            img {
+                width: 40px;
+                height: 40px;
+                padding: 2px;
+                border-radius: 50%;
+                border: 1px solid $success;
+            }
+        }
+
+        .logout {
+            margin: 0.5em 0 0;
+            form {
+                button {
+                    padding: unset;
+                    background: none;
+                    i {
+                        color: $danger;
+                    }
+                }
+            }
+        }
+    }
+
+    .active {
+        a {
+            color: $aside_text_color;
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (width >= 726px) {
+    aside {
+        text-align: left;
+
+        i {
+            font-size: 0.95em;
+        }
+
+        .brand {
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.2em;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+        }
+
+        ul {
+            margin: 1.8em 0;
+
+            li {
+                border-bottom: 1px solid $faded;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.2em;
+                }
+            }
+        }
+
+        .footer {
+            left: 0;
+            margin: 0 0.4em 0;
+
+            .profile,
+            .logout button {
+                display: flex;
+                align-items: center;
+                gap: 0.3em;
+            }
+
+            .profile {
+                img {
+                    width: 35px;
+                    height: 35px;
+                }
+
+                span {
+                    font-size: 0.8em;
+                }
+            }
+
+            .logout {
+                form {
+                    button {
+                        justify-content: center;
+                        color: #fff;
+                        background: $danger;
+                        width: 100%;
+                        padding: 6px 8px;
+                        text-align: center;
+
+                        i{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
