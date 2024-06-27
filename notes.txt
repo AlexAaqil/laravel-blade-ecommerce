@@ -1,10 +1,19 @@
 -------------------------------------
+TODOs:
+-------------------------------------
+# product images: ensure images are deleted and updated correctly in the storage.
+# product measurements: come up with a better measurements system.
+
+
+
+-------------------------------------
 NOTES:
 -------------------------------------
 User levels:
 0 - super admin
 1 - admin
 2 - user
+
 
 
 -------------------------------------
