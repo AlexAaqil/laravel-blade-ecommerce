@@ -15,6 +15,14 @@ $status: #c28005;
 
 $primary_button: #000;
 
+.danger {
+    color: $danger;
+}
+
+.success {
+    color: $success;
+}
+
 .center {
     text-align: center !important;
 }

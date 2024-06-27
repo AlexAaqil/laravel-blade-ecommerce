@@ -8,6 +8,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserMessageController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Product\ProductMeasurementController;
+use App\Http\Controllers\Product\ProductCategoryController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -39,6 +42,10 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
+
+    Route::resource('product-measurements', ProductMeasurementController::class);
+    Route::resource('product-categories', ProductCategoryController::class);
+    Route::resource('products', ProductController::class);
 
     Route::resource('/blog-categories', BlogCategoryController::class)->only('store', 'edit', 'update', 'destroy');
 
