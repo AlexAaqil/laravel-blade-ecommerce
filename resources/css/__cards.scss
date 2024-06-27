@@ -26,9 +26,7 @@
                 
                 span {
                     font-size: 0.8em;
-                    &:not(:first-of-type) {
-                        margin: 0 0.8em 0 0;
-                    }
+                    margin: 0 0.8em 0 0;
                 }
             }
 

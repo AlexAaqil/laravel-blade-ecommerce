@@ -195,8 +195,6 @@ aside .active a {
 }
 .cards .card .text .extra_details span {
   font-size: 0.8em;
-}
-.cards .card .text .extra_details span:not(:first-of-type) {
   margin: 0 0.8em 0 0;
 }
 .cards .card .text .details {
@@ -485,6 +483,9 @@ a.btn {
   gap: 1em;
   margin: 0.3em 0 0;
 }
+.custom_form form .input_group .custom_radio_buttons * {
+  color: #5a5a5a;
+}
 .custom_form form .input_group .custom_radio_buttons label {
   position: relative;
   padding: 0.3em 0;
@@ -542,7 +543,8 @@ a.btn {
 
 @media screen and (width >= 726px) {
   .custom_form .row_input_group,
-  .custom_form .row_input_group_3 {
+  .custom_form .row_input_group_3,
+  .custom_form .row_input_group_4 {
     display: grid;
     gap: 0 1em;
   }
@@ -551,6 +553,9 @@ a.btn {
   }
   .custom_form .row_input_group_3 {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .custom_form .row_input_group_4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 footer {
@@ -1117,6 +1122,34 @@ footer .copyright {
   display: flex;
   align-items: center;
   gap: 1em;
+}
+
+.Admin .Products .custom_form .product_images {
+  display: flex;
+  gap: 0.8em;
+  margin: 0 0 0.5em;
+}
+.Admin .Products .custom_form .product_images .product_image {
+  position: relative;
+  height: 120px;
+  width: 120px;
+}
+.Admin .Products .custom_form .product_images .product_image a {
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 
 .Admin aside {

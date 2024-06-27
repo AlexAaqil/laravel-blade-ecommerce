@@ -24,7 +24,7 @@ class ProductImage extends Model
 
     public function getProductImageUrl() {
         if(!empty($this->image)) {
-            return url('storage/' . $this->image);
+            return url('storage/product_images/' . $this->image);
         }
         else {
             return asset('assets/images/default_image.jpg');

@@ -65,25 +65,67 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Product $product)
     {
-        //
+        $categories = ProductCategory::orderBy('title')->get();
+        $measurements = ProductMeasurement::orderBy('unit')->get();
+
+        return view('admin.products.edit', compact('categories', 'measurements', 'product'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:120|unique:products,title,' . $product->id,
+            'product_code' => 'nullable|string',
+            'is_featured' => 'required|boolean',
+            'is_visible' => 'required|boolean',
+            'category_id' => 'nullable|numeric',
+            'measurement_id' => 'nullable|numeric',
+            'buying_price' => 'numeric',
+            'selling_price' => 'numeric',
+            'discount_amount' => 'numeric',
+            'discount_percentage' => 'numeric',
+            'stock_count' => 'numeric',
+            'safety_stock' => 'numeric',
+            'images' => 'max:2048',
+            'description' => 'nullable|string',
+        ]);
+
+        $validated['slug'] = Str::slug($validated['title']);
+
+        $product->update($validated);
+
+        // Retrieve existing images
+        $existing_images = $product->images()->pluck('image')->toArray();
+
+        // Check if new images are being uploaded
+        $images = $request->file('images');
+        if ($images) {
+            $total_images = count($existing_images) + count($images);
+
+            // Check if the total number of images doesn't exceed five
+            if ($total_images <= 5) {
+                foreach ($images as $image) {
+                    $extension = $image->getClientOriginalExtension();
+                    $filename = Str::slug($validated['title']) . '-' . uniqid() . '.' .$extension;
+
+                    $image->storeAs('product_images', $filename, 'public');
+
+                    $image_upload = new ProductImage;
+                    $image_upload->image = $filename;
+                    $image_upload->product_id = $product->id;
+
+                    $image_upload->save();
+                }
+            } else {
+                return redirect()->route('products.edit', $product->id)->withErrors(['images' => 'You can only upload a maximum of five images.'])->withInput();
+            }
+        }
+
+        return redirect()->back()->with('success', ['message' => 'Product has been updated.']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
         //

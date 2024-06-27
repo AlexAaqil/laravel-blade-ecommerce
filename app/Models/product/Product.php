@@ -67,11 +67,13 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }
 
-    public function images() {
+    public function images() 
+    {
         return $this->hasMany(ProductImage::class, 'product_id')->orderBy('ordering');
     }
 
-    public function getFirstImage() {
+    public function getFirstImage() 
+    {
         $productImages = $this->images()->get();
         
         if ($productImages->isEmpty()) {

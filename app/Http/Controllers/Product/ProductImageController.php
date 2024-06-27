@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Product\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductImageController extends Controller
 {
@@ -56,11 +57,17 @@ class ProductImageController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ProductImage $productImage)
-    {
-        //
+    public function destroy($id) {
+        $image = ProductImage::find($id);
+
+        if($image) {
+            // Delete from storage
+            Storage::disk('public')->delete('product_imaegs/' . $image->image);
+
+            // Delete from database
+            $image->delete();
+        }
+
+        return redirect()->back()->with('success',['message' => 'Image has been deleted']);
     }
 }

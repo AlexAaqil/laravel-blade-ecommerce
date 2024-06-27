@@ -11,6 +11,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\ProductMeasurementController;
 use App\Http\Controllers\Product\ProductCategoryController;
+use App\Http\Controllers\Product\ProductImageController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -44,8 +45,12 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
     Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
     Route::resource('product-measurements', ProductMeasurementController::class);
+
     Route::resource('product-categories', ProductCategoryController::class);
+
     Route::resource('products', ProductController::class);
+
+    Route::get('products-images/delete/{id}', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
 
     Route::resource('/blog-categories', BlogCategoryController::class)->only('store', 'edit', 'update', 'destroy');
 

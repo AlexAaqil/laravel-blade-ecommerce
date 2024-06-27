@@ -37,7 +37,9 @@
 
                     <div class="text">
                         <div class="extra_details">
-                            <span>{{ $product->product_code }}</span>
+                            @if($product->product_code)
+                                <span>{{ $product->product_code }}</span>
+                            @endif
                             <span>{{ $product->category ? $product->category->title : 'no category' }}</span>
                             <span class="{{ $product->stock_count == 0 ? 'danger' : 'success' }}">
                                 {{ $product->stock_count == 0 ? 'out of stock' : 'in stock (' . $product->stock_count . ')' }}
@@ -61,7 +63,9 @@
                                                 <span class="old_price">{{ $product->selling_price }}</span>
                                             </span>
                                         @else
-                                            <span class="price">Ksh. {{ $product->selling_price }}</span>
+                                            <span class="price">
+                                                <span class="new_price">Ksh. {{ $product->selling_price }}</span>
+                                            </span>
                                         @endif
                                     @endif
 
