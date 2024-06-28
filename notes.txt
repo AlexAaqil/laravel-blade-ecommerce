@@ -1,7 +1,7 @@
 -------------------------------------
 TODOs:
 -------------------------------------
-# product images: ensure images are deleted and updated correctly in the storage.
+# categories and measurements: RUD operations.
 # product measurements: come up with a better measurements system.
 
 
