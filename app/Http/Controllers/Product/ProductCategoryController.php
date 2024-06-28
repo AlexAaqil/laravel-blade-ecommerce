@@ -9,20 +9,11 @@ use Illuminate\Support\Str;
 
 class ProductCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
-    }
+        $categories = ProductCategory::orderBy('title')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('admin.products.categories.index', compact('categories'));
     }
 
     public function store(Request $request)
@@ -41,32 +32,33 @@ class ProductCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ProductCategory $productCategory)
+    public function show(ProductCategory $product_category)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ProductCategory $productCategory)
+    public function edit(ProductCategory $product_category)
     {
-        //
+        return view('admin.products.categories.edit', compact('product_category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request, ProductCategory $product_category)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:80|unique:product_categories,title,' . $product_category->id,
+        ]);
+
+        $validated['slug'] = Str::slug($validated['title']);
+
+        $product_category->update($validated);
+
+        return redirect()->route('product-categories.index')->with('success', ['message' => 'Product category has been updated']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy(ProductCategory $product_category)
     {
-        //
+        $product_category->delete();
+
+        return redirect()->route('product-categories.index')->with('success', ['message' => 'Product category has been deleted']);
     }
 }

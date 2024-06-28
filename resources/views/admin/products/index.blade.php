@@ -8,8 +8,8 @@
     <div class="body">
         <div class="related_pages">
             <a href="">Reviews ({{ $reviews }})</a>
-            <a href="">Categories ({{ $categories }})</a>
-            <a href="">Measurements ({{ $measurements }})</a>
+            <a href="{{ route('product-categories.index') }}">Categories ({{ $categories }})</a>
+            <a href="{{ route('product-measurements.index') }}">Measurements ({{ $measurements }})</a>
         </div>
 
         @if(count($products) > 0)

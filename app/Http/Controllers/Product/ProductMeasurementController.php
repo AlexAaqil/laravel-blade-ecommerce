@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 
 class ProductMeasurementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $measurements = ProductMeasurement::orderBy('unit')->get();
+
+        return view('admin.products.measurements.index', compact('measurements'));
     }
 
     /**
@@ -39,32 +38,32 @@ class ProductMeasurementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ProductMeasurement $productMeasurement)
+    public function show(ProductMeasurement $product_measurement)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ProductMeasurement $productMeasurement)
+    public function edit(ProductMeasurement $product_measurement)
     {
-        //
+        return view('admin.products.measurements.edit', compact('product_measurement'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ProductMeasurement $productMeasurement)
+    public function update(Request $request, ProductMeasurement $product_measurement)
     {
-        //
+        $validated = $request->validate([
+            'unit' => 'required|string|max:80',
+            'value' => 'required|numeric',
+        ]);
+
+        $product_measurement->update($validated);
+
+        return redirect()->route('product-measurements.index')->with('success', ['message' => 'Product measurement has been updated']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ProductMeasurement $productMeasurement)
+    public function destroy(ProductMeasurement $product_measurement)
     {
-        //
+        $product_measurement->delete();
+
+        return redirect()->route('product-measurements.index')->with('success', ['message' => 'Product measurement has been deleted']);
     }
 }

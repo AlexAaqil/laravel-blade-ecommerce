@@ -96,6 +96,37 @@ $thead_background: #000;
                     }
                 }
             }
+
+            .list {
+                list-style: none;
+                li {
+                    padding: 2px 0;
+
+                    form {
+                        button {
+                            background: transparent;
+                            padding: 2px;
+                        }
+                    }
+                }
+            }
+
+            .create_form {
+                display: flex;
+                align-items: center;
+                margin: 0 0 0.5em;
+
+                input {
+                    border-radius: 16px;
+                    width: 40dvw;
+                    margin: 0 0.5em 0 0;
+                    padding: 4px 12px;
+                }
+
+                button {
+                    padding: 4px 8px;
+                }
+            }
         }
 
         .custom_form {
@@ -118,13 +149,26 @@ $thead_background: #000;
         .related_pages {
             display: flex;
             flex-wrap: wrap;
-            gap: 1em;
             margin: 0 0 0.5em;
+
+            a,
+            span {
+                font-size: 0.85em;
+            }
 
             a {
                 text-decoration: none;
                 color: $dark_text;
-                font-size: 0.85em;
+                &:not(:last-of-type) {
+                    margin: 0 1em 0 0;
+                }
+            }
+
+            span {
+                &::before {
+                    content: "/";
+                    margin: 0 0.4em;
+                }
             }
         }
     }

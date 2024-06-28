@@ -1,3 +1,8 @@
+.text_link {
+  text-decoration: none;
+  color: #000;
+}
+
 .danger {
   color: red;
 }
@@ -1244,6 +1249,30 @@ footer .copyright {
   justify-content: center;
   gap: 0 2em;
 }
+.Admin .admin_content .body .list {
+  list-style: none;
+}
+.Admin .admin_content .body .list li {
+  padding: 2px 0;
+}
+.Admin .admin_content .body .list li form button {
+  background: transparent;
+  padding: 2px;
+}
+.Admin .admin_content .body .create_form {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.5em;
+}
+.Admin .admin_content .body .create_form input {
+  border-radius: 16px;
+  width: 40dvw;
+  margin: 0 0.5em 0 0;
+  padding: 4px 12px;
+}
+.Admin .admin_content .body .create_form button {
+  padding: 4px 8px;
+}
 .Admin .admin_content .custom_form form {
   padding: 15px;
   border: 1px solid #b3b3b3;
@@ -1259,13 +1288,22 @@ footer .copyright {
 .Admin .admin_content .related_pages {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
   margin: 0 0 0.5em;
+}
+.Admin .admin_content .related_pages a,
+.Admin .admin_content .related_pages span {
+  font-size: 0.85em;
 }
 .Admin .admin_content .related_pages a {
   text-decoration: none;
   color: #000;
-  font-size: 0.85em;
+}
+.Admin .admin_content .related_pages a:not(:last-of-type) {
+  margin: 0 1em 0 0;
+}
+.Admin .admin_content .related_pages span::before {
+  content: "/";
+  margin: 0 0.4em;
 }
 
 @media screen and (width >= 726px) {
