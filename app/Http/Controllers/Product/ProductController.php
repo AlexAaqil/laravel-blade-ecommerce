@@ -143,7 +143,20 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        //
+        $images = $product->images->pluck('image')->toArray();
+
+        // Delete the images from the DB
+        $product->images()->delete();
+
+        // Delete the product itself
+        $product->delete();
+
+        // Delete the images from storage
+        foreach($images as $image) {
+            Storage::disk('public')->delete('product_images/' . $image);
+        }
+
+        return redirect()->route('products.index')->with('success', ['message' => 'Product has been deleted.']);
     }
 
     private function storeProductImages(Request $request, Product $product)

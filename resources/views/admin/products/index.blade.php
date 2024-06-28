@@ -85,4 +85,8 @@
             <p>No products yet.</p>
         @endif
     </div>
+
+    <x-slot name="javascript">
+        <x-sweetalert />
+    </x-slot>
 </x-admin-layout>
