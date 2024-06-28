@@ -1,9 +1,9 @@
 -------------------------------------
 TODOs:
 -------------------------------------
-# correct the calculate discount method
-# shop page
 # product details page
+# correct the calculate discount method
+
 # product measurements: come up with a better measurements system.
 
 
