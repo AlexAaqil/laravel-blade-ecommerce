@@ -6,6 +6,12 @@
     />
 
     <div class="body">
+        <div class="related_pages">
+            <a href="">Reviews ({{ $reviews }})</a>
+            <a href="">Categories ({{ $categories }})</a>
+            <a href="">Measurements ({{ $measurements }})</a>
+        </div>
+
         @if(count($products) > 0)
             <div class="cards products_wrapper">
                 @foreach($products as $product)

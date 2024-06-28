@@ -8,6 +8,7 @@ use App\Models\Product\Product;
 use App\Models\product\ProductMeasurement;
 use App\Models\product\ProductCategory;
 use App\Models\product\ProductImage;
+use App\Models\product\ProductReview;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,8 +19,11 @@ class ProductController extends Controller
         $products = Product::with('category', 'images')->orderBy('ordering')
         ->orderBy('title')
         ->get();
+        $measurements = ProductMeasurement::count();
+        $categories = ProductCategory::count();
+        $reviews = ProductReview::count();
 
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products', 'measurements', 'categories', 'reviews'));
     }
 
     public function create()
