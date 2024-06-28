@@ -8,8 +8,8 @@
     <div class="nav_links">
         @php
             $nav_links = [
+                ['route' => 'shop', 'text' => 'Shop'],
                 ['route' => 'about', 'text' => 'About'],
-                ['route' => 'services', 'text' => 'Services'],
                 ['route' => 'contact', 'text' => 'Contact'],
                 ['route' => 'users.blogs', 'text' => 'Blogs'],
             ];

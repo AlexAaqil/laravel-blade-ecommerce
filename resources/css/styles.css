@@ -787,9 +787,9 @@ footer .copyright {
 }
 .Shop .Categories .container a {
   text-decoration: none;
-  background: #393e46;
+  background: #d9d9d9;
   color: #000;
-  font-size: 0.9em;
+  font-size: 0.85em;
   padding: 2px 8px;
   border-radius: 16px;
 }

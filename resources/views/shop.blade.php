@@ -7,42 +7,26 @@
 
     <section class="Categories">
         <div class="container">
-            <a href="#">all</a>
-            <a href="#">electronics</a>
-            <a href="#">shoes</a>
-            <a href="#">computers</a>
-            <a href="#">clothes</a>
-            <a href="#">TVs</a>
-            <a href="#">cameras</a>
-            <a href="#">phone</a>
-            <a href="#">accessories</a>
-            <a href="#">bags</a>
-            <a href="#">chargers</a>
-            <a href="#">laptops</a>
-            <a href="#">printers</a>
+            @if(count($categories) > 0)
+                <a href="#">All</a>
+                @foreach($categories as $category)
+                    <a href="#">{{ $category->title }}</a>
+                @endforeach
+            @else
+                <span>No categories available</span>
+            @endif
         </div>
     </section>
 
     <section class="Products">
-        <div class="container">
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
-            @include('partials.product')
+        <div class="cards container">
+            @if(count($products) > 0)
+                @foreach($products as $product)
+                    <div class="card product_card">
+                        @include('partials.product')
+                    </div>
+                @endforeach
+            @endif
         </div>
     </section>
 </x-general-layout>

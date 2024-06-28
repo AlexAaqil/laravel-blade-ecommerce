@@ -15,7 +15,7 @@ use App\Http\Controllers\Product\ProductImageController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
-Route::get('/services', [GeneralPagesController::class, 'services'])->name('services');
+Route::get('/shop', [GeneralPagesController::class, 'shop'])->name('shop');
 Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [UserMessageController::class, 'store'])->name('user-messages.store');
 Route::get('/blogs', [BlogController::class, 'users_blogs'])->name('users.blogs');
