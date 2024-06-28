@@ -148,7 +148,7 @@
                 @if(!empty($product->images->count()))
                     @foreach ($product->images as $image)
                         @if(!empty($image->getProductImageUrl()))
-                            <div class="product_image sortable_images" id={{ $image->id }}>
+                            <div class="product_image sortable_item" id={{ $image->id }}>
                                 <img src="{{ $image->getProductImageUrl() }}" alt="{{ $image->image_name }}" />
                                 <a href="{{ route('product-images.destroy', $image->id) }}" >
                                     <i class="fas fa-trash-alt"></i>
@@ -206,5 +206,6 @@
 
     <x-slot name="javascript">
         <x-text-editor />
+        <x-sortable url="{{ route('product-images.sort') }}" />
     </x-slot>
 </x-admin-layout>

@@ -62,12 +62,17 @@ class ProductImageController extends Controller
 
         if($image) {
             // Delete from storage
-            Storage::disk('public')->delete('product_imaegs/' . $image->image);
+            Storage::delete('public/product_images/' . $image->image);
 
             // Delete from database
             $image->delete();
         }
 
         return redirect()->back()->with('success',['message' => 'Image has been deleted']);
+    }
+
+    public function sort(Request $request)
+    {
+        return $this->sort_items($request, ProductImage::class);
     }
 }

@@ -45,15 +45,12 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
     Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
     Route::resource('product-measurements', ProductMeasurementController::class);
-
     Route::resource('product-categories', ProductCategoryController::class);
-
     Route::resource('products', ProductController::class);
+    Route::get('/products-images/delete/{id}', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
+    Route::post('/product-images/sort', [ProductImageController::class, 'sort'])->name('product-images.sort');
 
-    Route::get('products-images/delete/{id}', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
-
-    Route::resource('/blog-categories', BlogCategoryController::class)->only('store', 'edit', 'update', 'destroy');
-
-    Route::resource('/blogs', BlogController::class)->except('show');
+    Route::resource('blog-categories', BlogCategoryController::class)->only('store', 'edit', 'update', 'destroy');
+    Route::resource('blogs', BlogController::class)->except('show');
     Route::post('/blogs/sort-lessons', [BlogController::class, 'sort_blogs'])->name('blogs.sort');
 });

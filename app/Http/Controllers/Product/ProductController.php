@@ -9,6 +9,7 @@ use App\Models\product\ProductMeasurement;
 use App\Models\product\ProductCategory;
 use App\Models\product\ProductImage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -97,12 +98,26 @@ class ProductController extends Controller
         $product->update($validated);
 
         // Retrieve existing images
-        $existing_images = $product->images()->pluck('image')->toArray();
+        $existing_images = $product->images;
+
+        // Rename existing images to reflect the new title
+        foreach($existing_images as $image) {
+            $old_filename = 'product_images/' . $image->image;
+            $extension = pathinfo($image->image, PATHINFO_EXTENSION);
+            $new_filename = Str::slug($validated['title']) . '-' . uniqid() . '.' . $extension;
+            $new_path = 'product_images/' . $new_filename;
+
+            if(Storage::disk('public')->exists($old_filename)) {
+                Storage::disk('public')->move($old_filename, $new_path);
+                $image->image = $new_filename;
+                $image->save();
+            }
+        }
 
         // Check if new images are being uploaded
         $images = $request->file('images');
         if ($images) {
-            $total_images = count($existing_images) + count($images);
+            $total_images = $existing_images->count() + count($images);
 
             // Check if the total number of images doesn't exceed five
             if ($total_images <= 5) {
