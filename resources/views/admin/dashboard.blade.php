@@ -16,6 +16,16 @@
 
         <div class="stat">
             <div class="icon">
+                <i class="fas fa-barcode"></i>
+            </div>
+            <div class="text">
+                <span>{{ $count_products }}</span>
+                <a href="{{ route('products.index') }}">Products</a>
+            </div>
+        </div>
+
+        <div class="stat">
+            <div class="icon">
                 <i class="fas fa-blog"></i>
             </div>
             <div class="text">

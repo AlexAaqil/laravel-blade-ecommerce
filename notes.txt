@@ -1,7 +1,9 @@
 -------------------------------------
 TODOs:
 -------------------------------------
-# categories and measurements: RUD operations.
+# correct the calculate discount method
+# shop page
+# product details page
 # product measurements: come up with a better measurements system.
 
 
