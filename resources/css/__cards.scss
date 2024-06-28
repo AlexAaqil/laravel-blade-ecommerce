@@ -137,3 +137,22 @@
         }
     }
 }
+
+.Admin {
+    .product_card {
+        .image {
+            .actions {
+                form {
+                    button {
+                        background: lighten($faded, 50);
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        padding: 4px;
+                        font-size: 1.15em;
+                    }
+                }
+            }
+        }
+    }
+}

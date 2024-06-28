@@ -28,9 +28,9 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <a href="javascript:void(0);" onclick="deleteItem({{ $product->id }}, 'product');">
+                                <button type="button" onclick="deleteItem({{ $product->id }}, 'product');">
                                     <i class="fas fa-trash-alt danger"></i>
-                                </a>
+                                </button>
                             </form>
                         </div>
                     </div>
