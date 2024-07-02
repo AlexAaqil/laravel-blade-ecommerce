@@ -1187,6 +1187,17 @@ footer .copyright {
   font-size: 1.5em;
   margin: 0 0 0.5em;
 }
+.Product_details .details_wrapper .container .text .forms {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  margin: 1em 0;
+}
+.Product_details .details_wrapper .container .text .forms .btn {
+  background: transparent;
+  color: #000;
+  border: 2px solid #000;
+}
 .Product_details .details_wrapper .container .text .extras p {
   display: grid;
   grid-template-columns: 1fr 2fr;

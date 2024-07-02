@@ -29,15 +29,17 @@
                     @endif
                 </p>
 
-                <div class="action">
+                <div class="forms">
                     <form action="" method="POST">
                         @csrf
     
                         <button type="submit">
                             <i class="fas fa-cart-plus"></i>
-                            <span>Add to cart</span>
+                            <span>Add to Cart</span>
                         </button>
                     </form>
+
+                    <a href="#" class="btn">Review Product</a>
                 </div>
 
                 <div class="extras">
