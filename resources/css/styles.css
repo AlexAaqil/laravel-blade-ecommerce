@@ -253,20 +253,6 @@ aside .active a {
   display: flex;
   gap: 6px;
 }
-.product_card .price_rating .price {
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-}
-.product_card .price_rating .price .new_price {
-  color: green;
-  font-size: 1.15em;
-}
-.product_card .price_rating .price .old_price {
-  color: red;
-  font-size: 0.8em;
-  text-decoration: line-through;
-}
 .product_card .price_rating .rating span {
   font-size: 0.75em;
 }
@@ -1139,6 +1125,22 @@ footer .copyright {
   gap: 1em;
 }
 
+.price {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.price .new_price {
+  color: green;
+  font-size: 1.15em;
+}
+.price .old_price {
+  color: red;
+  font-size: 0.8em;
+  text-decoration: line-through;
+}
+
 .Admin .Products .custom_form .product_images {
   display: flex;
   gap: 0.8em;
@@ -1167,6 +1169,51 @@ footer .copyright {
   height: 30px;
 }
 
+.Product_details section:not(:last-of-type) {
+  margin: 0 0 5em;
+}
+.Product_details .details_wrapper .container {
+  display: grid;
+  gap: 1em 2em;
+}
+.Product_details .details_wrapper .container .images .main_image {
+  height: 250px;
+}
+.Product_details .details_wrapper .container .images .other_images img {
+  height: 100px;
+  width: 100px;
+}
+.Product_details .details_wrapper .container .text h1 {
+  font-size: 1.5em;
+  margin: 0 0 0.5em;
+}
+.Product_details .details_wrapper .container .text .extras p {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.Product_details .details_wrapper .container .text .extras p span {
+  font-size: 0.85em;
+  color: #4d4d4d;
+}
+.Product_details .details_wrapper .container .text .extras p span:last-of-type {
+  color: #000;
+  font-weight: bold;
+}
+.Product_details .details_wrapper .container .text .description {
+  margin: 1.5em 0 0;
+}
+.Product_details .related_products .container h2 {
+  margin: 0 0 0.8em;
+}
+
+@media screen and (width >= 726px) {
+  .Product_details .details_wrapper .container {
+    grid-template-columns: 60% auto;
+  }
+  .Product_details .details_wrapper .container .images .main_image {
+    height: 400px;
+  }
+}
 .Admin aside {
   width: 15%;
 }

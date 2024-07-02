@@ -1,3 +1,21 @@
+.price {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    .new_price {
+        color: $success;
+        font-size: 1.15em;
+    }
+
+    .old_price {
+        color: $danger;
+        font-size: 0.8em;
+        text-decoration: line-through;
+    }
+}
+
 .Admin {
     .Products {
         .custom_form {
@@ -27,6 +45,86 @@
                         justify-content: center;
                         width: 30px;
                         height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Product_details {
+    section {
+        &:not(:last-of-type) {
+            margin: 0 0 5em;
+        }
+    }
+
+    .details_wrapper {
+        .container {
+            display: grid;
+            gap: 1em 2em;
+
+            .images {
+                .main_image {
+                    height: 250px;
+                }
+
+                .other_images {
+                    img {
+                        height: 100px;
+                        width: 100px;
+                    }
+                }
+            }
+
+            .text {
+                h1 {
+                    font-size: 1.5em;
+                    margin: 0 0 0.5em;
+                }
+
+                .extras {
+                    p {
+                        display: grid;
+                        grid-template-columns: 1fr 2fr;
+
+                        span {
+                            font-size: 0.85em;
+                            color: darken($faded, 20);
+
+                            &:last-of-type {
+                                color: $dark_text;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+
+                .description {
+                    margin: 1.5em 0 0;
+                }
+            }
+        }
+    }
+
+    .related_products {
+        .container {
+            h2 {
+                margin: 0 0 0.8em;
+            }
+        }
+    }
+}
+
+@media screen and (width >= 726px) {
+    .Product_details {
+        .details_wrapper {
+            .container {
+                grid-template-columns: 60% auto;
+
+                .images  {
+                    .main_image {
+                        height: 400px;
                     }
                 }
             }

@@ -62,12 +62,15 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', ['message' => 'Product has been added']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
+    public function show($slug)
     {
-        //
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $related_products = Product::where('category_id', $product->category_id)
+        ->where('id', '!=', $product->id)
+        ->take(5)
+        ->get();
+
+        return view('product-details', compact('product', 'related_products'));
     }
 
     public function edit(Product $product)

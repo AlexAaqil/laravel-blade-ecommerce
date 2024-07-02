@@ -2,6 +2,7 @@
 TODOs:
 -------------------------------------
 # product details page
+# product reviews
 # correct the calculate discount method
 
 # product measurements: come up with a better measurements system.

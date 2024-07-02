@@ -1,6 +1,6 @@
 <div class="card product_card">
     <div class="image">
-        <a href="#">
+        <a href="{{ route('products.show', $product->slug) }}">
             <img src="{{ $product->getFirstImage() }}" alt="{{ $product->title }}">
         </a>
 
@@ -41,7 +41,7 @@
         
         <div class="details">
             <div class="info">
-                <a href="#" class="title">{{ $product->title }}</a>
+                <a href="{{ route('products.show', $product->slug) }}" class="title">{{ $product->title }}</a>
 
                 <div class="price_rating">
                     @if($discount = $product->calculate_discount())

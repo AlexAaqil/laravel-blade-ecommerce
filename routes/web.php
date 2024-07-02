@@ -16,6 +16,7 @@ use App\Http\Controllers\Product\ProductImageController;
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
 Route::get('/shop', [GeneralPagesController::class, 'shop'])->name('shop');
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [UserMessageController::class, 'store'])->name('user-messages.store');
 Route::get('/blogs', [BlogController::class, 'users_blogs'])->name('users.blogs');
@@ -46,7 +47,7 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 
     Route::resource('product-measurements', ProductMeasurementController::class);
     Route::resource('product-categories', ProductCategoryController::class);
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class)->except('show');
     Route::get('/products-images/delete/{id}', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
     Route::post('/product-images/sort', [ProductImageController::class, 'sort'])->name('product-images.sort');
 

@@ -92,23 +92,6 @@
             gap: 6px;
         }
 
-        .price {
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-
-            .new_price {
-                color: $success;
-                font-size: 1.15em;
-            }
-
-            .old_price {
-                color: $danger;
-                font-size: 0.8em;
-                text-decoration: line-through;
-            }
-        }
-
         .rating {
             span {
                 i {
