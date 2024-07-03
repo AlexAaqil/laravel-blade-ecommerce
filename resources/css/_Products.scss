@@ -63,23 +63,43 @@
         .container {
             display: grid;
             gap: 1em 2em;
+            padding: 1.5em $container_sides_padding 0;
 
             .images {
                 .main_image {
                     height: 250px;
+                    overflow: hidden;
+                    border: 1px solid $faded;
+                    border-radius: 12px;
+                    margin: 0 0 0.3em;
+                    padding: 2px;
+                    cursor: crosshair;
+
+                    img {
+                        border-radius: 12px;
+                    }
                 }
 
                 .other_images {
                     img {
-                        height: 100px;
-                        width: 100px;
+                        height: 70px;
+                        width: 70px;
+                        border: 2px solid transparent;
+                        border-radius: 4px;
+                        transition: border 0.5s ease;
+                        cursor: pointer;
+                        padding: 1px;
+                    }
+
+                    .active {
+                        border: 2px solid darken($faded, 45);
                     }
                 }
             }
 
             .text {
                 h1 {
-                    font-size: 1.5em;
+                    font-size: 1.35em;
                     margin: 0 0 0.5em;
                 }
 
@@ -102,7 +122,7 @@
                         grid-template-columns: 1fr 2fr;
 
                         span {
-                            font-size: 0.85em;
+                            font-size: 0.8em;
                             color: darken($faded, 20);
 
                             &:last-of-type {

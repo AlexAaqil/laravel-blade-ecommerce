@@ -1175,16 +1175,34 @@ footer .copyright {
 .Product_details .details_wrapper .container {
   display: grid;
   gap: 1em 2em;
+  padding: 1.5em 5% 0;
 }
 .Product_details .details_wrapper .container .images .main_image {
   height: 250px;
+  overflow: hidden;
+  border: 1px solid grey;
+  border-radius: 12px;
+  margin: 0 0 0.3em;
+  padding: 2px;
+  cursor: crosshair;
+}
+.Product_details .details_wrapper .container .images .main_image img {
+  border-radius: 12px;
 }
 .Product_details .details_wrapper .container .images .other_images img {
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: border 0.5s ease;
+  cursor: pointer;
+  padding: 1px;
+}
+.Product_details .details_wrapper .container .images .other_images .active {
+  border: 2px solid #0d0d0d;
 }
 .Product_details .details_wrapper .container .text h1 {
-  font-size: 1.5em;
+  font-size: 1.35em;
   margin: 0 0 0.5em;
 }
 .Product_details .details_wrapper .container .text .forms {
@@ -1203,7 +1221,7 @@ footer .copyright {
   grid-template-columns: 1fr 2fr;
 }
 .Product_details .details_wrapper .container .text .extras p span {
-  font-size: 0.85em;
+  font-size: 0.8em;
   color: #4d4d4d;
 }
 .Product_details .details_wrapper .container .text .extras p span:last-of-type {
