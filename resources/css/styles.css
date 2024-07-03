@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .text_link {
   text-decoration: none;
   color: #000;
@@ -30,7 +31,8 @@
   color: red;
 }
 
-.inactive_user {
+.inactive_user,
+.strike {
   text-decoration: line-through;
 }
 
@@ -531,6 +533,36 @@ a.btn {
   background: #fff;
   border: 2px solid #d6d6d6;
   border-radius: 50%;
+}
+.custom_form form .input_group .rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+}
+.custom_form form .input_group .rating:hover input:checked ~ label:before {
+  opacity: 0.4;
+}
+.custom_form form .input_group .rating label {
+  position: relative;
+  width: 1em;
+  font-size: 30px;
+  font-weight: 300;
+  color: #ffd600;
+  cursor: pointer;
+}
+.custom_form form .input_group .rating label::before {
+  content: "★";
+  position: absolute;
+  opacity: 0;
+}
+.custom_form form .input_group .rating label:hover:before, .custom_form form .input_group .rating label:hover ~ label:before {
+  opacity: 1 !important;
+}
+.custom_form form .input_group .rating input {
+  display: none;
+}
+.custom_form form .input_group .rating input:checked ~ label:before {
+  opacity: 1;
 }
 .custom_form form fieldset {
   border: none;
@@ -1141,32 +1173,8 @@ footer .copyright {
   text-decoration: line-through;
 }
 
-.Admin .Products .custom_form .product_images {
-  display: flex;
-  gap: 0.8em;
-  margin: 0 0 0.5em;
-}
-.Admin .Products .custom_form .product_images .product_image {
-  position: relative;
-  height: 120px;
-  width: 120px;
-}
-.Admin .Products .custom_form .product_images .product_image a {
-  text-decoration: none;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: red;
-  color: white;
-  font-weight: bold;
-  padding: 8px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
+.fa-star {
+  color: #ffd600;
 }
 
 .Product_details section:not(:last-of-type) {
@@ -1231,8 +1239,104 @@ footer .copyright {
 .Product_details .details_wrapper .container .text .description {
   margin: 1.5em 0 0;
 }
+.Product_details .reviews .reviews_wrapper {
+  display: grid;
+  gap: 1em 2em;
+}
+.Product_details .reviews .reviews_wrapper .review {
+  display: grid;
+  gap: 0.3em;
+  background: #fcfcee;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+.Product_details .reviews .reviews_wrapper .review .rating {
+  font-size: 0.8em;
+}
+.Product_details .reviews .reviews_wrapper .review .username {
+  font-size: 0.8em;
+  font-style: italic;
+  margin: 0.3em 0 0;
+}
+.Product_details .reviews .reviews_wrapper .review .username::before {
+  content: "''";
+}
+.Product_details .reviews .reviews_wrapper .review .username::after {
+  content: "''";
+}
 .Product_details .related_products .container h2 {
   margin: 0 0 0.8em;
+}
+
+.Product_reviews .container {
+  display: grid;
+  gap: 1em 2em;
+}
+.Product_reviews .container .product h1 {
+  font-size: 1.25em;
+}
+.Product_reviews .container .product img {
+  height: 300px;
+  margin: 0.5em 0;
+}
+.Product_reviews .update_review .custom_form form {
+  padding: 0 8px;
+}
+.Product_reviews .update_review .custom_form form .product_details {
+  margin: 0;
+  font-size: 0.9em;
+  text-align: center;
+}
+.Product_reviews .update_review .custom_form form .review {
+  margin: 4em 0 1em;
+  background: rgb(237, 238, 253);
+  padding: 8px 15px;
+  border-radius: 8px 8px 32px 8px;
+  position: relative;
+}
+.Product_reviews .update_review .custom_form form .review .rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid rgb(224, 222, 222);
+  padding: 4px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  text-align: right;
+  font-size: 0.85em;
+}
+
+.Admin .Products .custom_form .product_images {
+  display: flex;
+  gap: 0.8em;
+  margin: 0 0 0.5em;
+}
+.Admin .Products .custom_form .product_images .product_image {
+  position: relative;
+  height: 120px;
+  width: 120px;
+}
+.Admin .Products .custom_form .product_images .product_image a {
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 
 @media screen and (width >= 726px) {
@@ -1241,6 +1345,12 @@ footer .copyright {
   }
   .Product_details .details_wrapper .container .images .main_image {
     height: 400px;
+  }
+  .Product_details .reviews .reviews_wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .Product_reviews .container {
+    grid-template-columns: 1fr 1fr;
   }
 }
 .Admin aside {
@@ -1284,6 +1394,11 @@ footer .copyright {
 .Admin .admin_content .body {
   overflow: scroll;
 }
+.Admin .admin_content .body .table a,
+.Admin .admin_content .body .list a {
+  color: blue;
+  text-decoration: none;
+}
 .Admin .admin_content .body .table {
   width: 100%;
   border-spacing: 0;
@@ -1310,10 +1425,6 @@ footer .copyright {
 .Admin .admin_content .body .table tbody tr td {
   padding: 2px 6px;
 }
-.Admin .admin_content .body .table tbody tr td a {
-  color: blue;
-  text-decoration: none;
-}
 .Admin .admin_content .body .table tbody tr td .td_span {
   padding: 2px 6px;
   font-size: 0.65em;
@@ -1330,6 +1441,8 @@ footer .copyright {
   list-style: none;
 }
 .Admin .admin_content .body .list li {
+  display: flex;
+  gap: 1em;
   padding: 2px 0;
 }
 .Admin .admin_content .body .list li form button {

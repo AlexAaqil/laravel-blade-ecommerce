@@ -49,6 +49,7 @@ $container_sides_padding: 5%;
     color: $danger;
 }
 
-.inactive_user {
+.inactive_user,
+.strike {
     text-decoration: line-through;
 }

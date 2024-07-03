@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('review', 1500);
             $table->boolean('is_visible')->default(1);
             $table->unsignedSmallInteger('ordering')->default(100);
-            $table->string('image')->nullable();
 
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');

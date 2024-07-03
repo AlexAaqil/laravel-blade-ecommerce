@@ -41,13 +41,15 @@
                         </button>
                     </form>
 
-                    <a href="#" class="btn">Review Product</a>
+                    @if(auth()->user() && !auth()->user()->has_reviewed_product($product->id))
+                        <a href="{{ route('product-reviews.create', $product->slug) }}" class="btn">Review Product</a>
+                    @endif
                 </div>
 
                 <div class="extras">
                     <p>
                         <span>Rating</span>
-                        <span>{{ $product->average_rating() > 0 ? $product->average_rating() . ' / 5' : '0 / 5' }}</span>
+                        <span><i class="fas fa-star"></i> {{ $product->average_rating() > 0 ? number_format($product->average_rating(), 1) . ' / 5' : '0 / 5' }}</span>
                     </p>
                     <p>
                         <span>Category</span>
@@ -70,6 +72,24 @@
         </div>
     </section>
 
+    @if(count($product->visible_reviews()) > 0)
+    <section class="reviews">
+        <div class="container">
+            <h2>Reviews</h2>
+            <div class="reviews_wrapper">
+                @foreach($product->visible_reviews() as $review)
+                    <p class="review">
+                        <span class="rating"><i class="fas fa-star"></i> {{ $review->rating }} / 5</span>
+                        <span class="content">{{ $review->review }}</span>
+                        <span class="username">{{ $review->user->first_name . ' ' . $review->user->last_name }}</span>
+                    </p>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    @if(count($related_products) > 0)
     <section class="related_products">
         <div class="container">
             <h2>Related Products</h2>
@@ -80,6 +100,7 @@
             </div>
         </div>
     </section>
+    @endif
 
     <x-slot name="javascript">
         <script>

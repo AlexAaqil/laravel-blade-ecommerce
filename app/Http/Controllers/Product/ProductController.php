@@ -70,7 +70,7 @@ class ProductController extends Controller
         ->take(5)
         ->get();
 
-        return view('product-details', compact('product', 'related_products'));
+        return view('product.details', compact('product', 'related_products'));
     }
 
     public function edit(Product $product)

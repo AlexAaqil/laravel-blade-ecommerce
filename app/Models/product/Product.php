@@ -101,8 +101,13 @@ class Product extends Model
         return $this->hasMany(ProductReview::class, 'product_id');
     }
 
+    public function visible_reviews()
+    {
+        return $this->reviews->where('is_visible', 1);
+    }
+
     public function average_rating()
     {
-        return $this->reviews()->avg('rating');
+        return $this->visible_reviews()->avg('rating');
     }
 }

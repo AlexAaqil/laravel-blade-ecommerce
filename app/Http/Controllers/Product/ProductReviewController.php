@@ -4,63 +4,71 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product\ProductReview;
+use App\Models\Product\Product;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProductReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $reviews = ProductReview::orderBy('ordering')->orderBy('created_at')->get();
+
+        return view('admin.products.reviews.index', compact('reviews'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create($product)
     {
-        //
+        $product = Product::where('slug', $product)->firstOrFail();
+
+        return view('product.review', compact('product'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request, $product)
     {
-        //
+        $product = Product::findOrFail($product);
+
+        $validated = $request->validate([
+            'rating' => 'required|numeric',
+            'review' => 'required|string|max:1500',
+            'ordering' => 'numeric',
+            'is_visible' => 'boolean',
+        ]);
+
+        $validated['user_id'] = Auth::user()->id;
+        $validated['product_id'] = $product->id;
+
+        ProductReview::create($validated);
+
+        return redirect()->route('products.show', $product->slug)->with('success', ['message' => 'Thank you for the review']);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(ProductReview $productReview)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ProductReview $productReview)
+    public function edit(ProductReview $product_review)
     {
-        //
+        return view('admin.products.reviews.edit', compact('product_review'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ProductReview $productReview)
+    public function update(Request $request, ProductReview $product_review)
     {
-        //
+        $validated = $request->validate([
+            'is_visible' => 'required|numeric',
+            'ordering' => 'numeric',
+        ]);
+
+        $product_review->update($validated);
+
+        return redirect()->route('product-reviews.index')->with('success', ['message' => 'Product Review has been updated']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ProductReview $productReview)
+    public function destroy(ProductReview $product_review)
     {
-        //
+        $product_review->delete();
+
+        return redirect()->route('product-reviews.index')->with('success', ['message' => 'Product review has been deleted']);
     }
 }

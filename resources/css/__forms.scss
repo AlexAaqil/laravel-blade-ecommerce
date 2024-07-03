@@ -165,6 +165,45 @@ a.btn {
                     }
                 }
             }
+
+            .rating {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: start;
+
+                &:hover {
+                    input:checked~label:before {
+                        opacity: 0.4;
+                    }
+                }
+
+                label {
+                    position: relative;
+                    width: 1em;
+                    font-size: 30px;
+                    font-weight: 300;
+                    color: #ffd600;
+                    cursor: pointer;
+
+                    &::before {
+                        content: "\2605";
+                        position: absolute;
+                        opacity: 0;
+                    }
+
+                    &:hover:before,
+                    &:hover~label:before {
+                        opacity: 1 !important
+                    }
+                }
+
+                input {
+                    display: none;
+                    &:checked~label:before {
+                        opacity: 1;
+                    }
+                }
+            }
         }
 
         fieldset {

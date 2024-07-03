@@ -12,6 +12,7 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\ProductMeasurementController;
 use App\Http\Controllers\Product\ProductCategoryController;
 use App\Http\Controllers\Product\ProductImageController;
+use App\Http\Controllers\Product\ProductReviewController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/product-reviews/{product}', [ProductReviewController::class, 'create'])->name('product-reviews.create');
+    Route::post('/product-reviews/{product}', [ProductReviewController::class, 'store'])->name('product-reviews.store');
 });
 
 require __DIR__.'/auth.php';
@@ -45,8 +49,9 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 
     Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
-    Route::resource('product-measurements', ProductMeasurementController::class);
+    Route::resource('product-reviews', ProductReviewController::class)->except('create', 'store');
     Route::resource('product-categories', ProductCategoryController::class);
+    Route::resource('product-measurements', ProductMeasurementController::class);
     Route::resource('products', ProductController::class)->except('show');
     Route::get('/products-images/delete/{id}', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
     Route::post('/product-images/sort', [ProductImageController::class, 'sort'])->name('product-images.sort');

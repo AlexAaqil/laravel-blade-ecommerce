@@ -16,40 +16,8 @@
     }
 }
 
-.Admin {
-    .Products {
-        .custom_form {
-            .product_images {
-                display: flex;
-                gap: 0.8em;
-                margin: 0 0 0.5em;
-
-                .product_image {
-                    position: relative;
-                    height: 120px;
-                    width: 120px;
-
-                    a {
-                        text-decoration: none;
-                        cursor: pointer;
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        background: red;
-                        color: white;
-                        font-weight: bold;
-                        padding: 8px;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 30px;
-                        height: 30px;
-                    }
-                }
-            }
-        }
-    }
+.fa-star {
+    color: #ffd600;
 }
 
 .Product_details {
@@ -140,10 +108,138 @@
         }
     }
 
+    .reviews {
+        .reviews_wrapper {
+            display: grid;
+            gap: 1em 2em;
+
+            .review {
+                display: grid;
+                gap: 0.3em;
+                background: #fcfcee;
+                border-radius: 8px;
+                padding: 8px 16px;
+
+                .rating {
+                    font-size: 0.8em;
+                }
+
+
+                .username {
+                    font-size: 0.8em;
+                    font-style: italic;
+                    margin: 0.3em 0 0;
+
+                    &::before {
+                        content: "''";
+                    }
+
+                    &::after {
+                        content: "''";
+                    }
+                }
+            }
+        }
+
+    }
+
     .related_products {
         .container {
             h2 {
                 margin: 0 0 0.8em;
+            }
+        }
+    }
+}
+
+.Product_reviews {
+    .container {
+        display: grid;
+        gap: 1em 2em;
+
+        .product {
+            h1 {
+                font-size: 1.25em;
+            }
+
+            img {
+                height: 300px;
+                margin: 0.5em 0;
+            }
+        }
+    }
+
+    .update_review {
+        .custom_form {
+            form {
+                padding: 0 8px;
+
+                .product_details {
+                    margin: 0;
+                    font-size: 0.9em;
+                    text-align: center;
+                }
+
+                .review {
+                    margin: 4em 0 1em;
+                    background: rgb(237, 238, 253);
+                    padding: 8px 15px;
+                    border-radius: 8px 8px 32px 8px;
+                    position: relative;
+
+                    .rating {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 30px;
+                        width: 30px;
+                        border-radius: 50%;
+                        background: white;
+                        border: 2px solid rgb(224, 222, 222);
+                        padding: 4px;
+                        position: absolute;
+                        top: -10px;
+                        right: -10px;
+                        text-align: right;
+                        font-size: 0.85em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Admin {
+    .Products {
+        .custom_form {
+            .product_images {
+                display: flex;
+                gap: 0.8em;
+                margin: 0 0 0.5em;
+
+                .product_image {
+                    position: relative;
+                    height: 120px;
+                    width: 120px;
+
+                    a {
+                        text-decoration: none;
+                        cursor: pointer;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        background: red;
+                        color: white;
+                        font-weight: bold;
+                        padding: 8px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
             }
         }
     }
@@ -161,6 +257,18 @@
                     }
                 }
             }
+        }
+
+        .reviews {
+            .reviews_wrapper {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    }
+
+    .Product_reviews {
+        .container {
+            grid-template-columns: 1fr 1fr;
         }
     }
 }

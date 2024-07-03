@@ -7,7 +7,7 @@
 
     <div class="body">
         <div class="related_pages">
-            <a href="">Reviews ({{ $reviews }})</a>
+            <a href="{{ route('product-reviews.index') }}">Reviews ({{ $reviews }})</a>
             <a href="{{ route('product-categories.index') }}">Categories ({{ $categories }})</a>
             <a href="{{ route('product-measurements.index') }}">Measurements ({{ $measurements }})</a>
         </div>
@@ -75,9 +75,9 @@
                                         @endif
                                     @endif
 
-                                    @if($product->reviews->count() > 0)
+                                    @if($product->average_rating() > 0)
                                         <span class="rating">
-                                            <span><i class="fas fa-star"></i> {{ number_format($product->average_rating(), 1) }} ({{ $product->product_reviews->count() }} reviews)</span>
+                                            <span><i class="fas fa-star"></i> {{ number_format($product->average_rating(), 1) }} ({{ $product->reviews->count() }} reviews)</span>
                                         </span>
                                     @endif
                                 </div>
