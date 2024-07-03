@@ -32,7 +32,7 @@
 
                             <div class="text">
                                 <div class="extra_details">
-                                    <span class="faded">{{ $blog->category->title }}</span>
+                                    <span class="faded">{{ $blog->category ? $blog->category->title : '' }}</span>
                                 </div>
 
                                 <div class="details">

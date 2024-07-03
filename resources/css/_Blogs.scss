@@ -122,8 +122,10 @@
 
                 .image {
                     height: 400px;
+
                     img {
                         border-radius: 8px;
+                        object-fit: contain;
                     }
                 }
             }

@@ -992,6 +992,8 @@ footer .copyright {
 }
 .Blogs .Details .container header .image img {
   border-radius: 8px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .Blogs .Details .details {
   margin: 1em 0;
