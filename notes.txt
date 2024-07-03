@@ -1,10 +1,8 @@
 -------------------------------------
 TODOs:
 -------------------------------------
-# product details page:
-    - add comments.
-    - add options for viewing other images as main image.
 # product reviews.
+    - ensure users can only review a product once.
 # correct the calculate discount method.
 
 # product measurements: come up with a better measurements system.
