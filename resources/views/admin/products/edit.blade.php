@@ -88,6 +88,7 @@
 
             <fieldset>
                 <legend>Pricing</legend>
+                <span class="inline_alert">{{ session('discount_error') ? session('discount_error') : ($errors->has('discount') ? $errors->first('discount') : '') }}</span>
 
                 <div class="row_input_group_4">
                     <div class="input_group">
@@ -176,7 +177,7 @@
 
             <div class="input_group">
                 <label for="title">New Category Title</label>
-                <input type="text" name="title" id="title" placeholder="Title" value="{{ old('title') }}">
+                <input type="text" name="title" id="title" placeholder="Title">
                 <span class="inline_alert">{{ $errors->first('title') }}</span>
             </div>
 
