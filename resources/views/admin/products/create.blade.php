@@ -51,29 +51,24 @@
 
             <fieldset>
                 <legend>Pricing</legend>
+                <span class="inline_alert">{{ session('discount_error') ? session('discount_error') : ($errors->has('discount') ? $errors->first('discount') : '') }}</span>
 
-                <div class="row_input_group">
+                <div class="row_input_group_4">
                     <div class="input_group">
                         <label for="buying_price">Buying Price</label>
-                        <input type="number" name="buying_price" id="buying_price" placeholder="Buying Price" value="{{ old('buying_price', 0.00) }}">
+                        <input type="number" name="buying_price" id="buying_price" placeholder="Buying Price" value="{{ old('buying_price') }}">
                         <span class="inline_alert">{{ $errors->first('buying_price') }}</span>
                     </div>
     
                     <div class="input_group">
                         <label for="selling_price">Selling Price</label>
-                        <input type="number" name="selling_price" id="selling_price" placeholder="Selling Price" value="{{ old('selling_price', 0.00) }}">
+                        <input type="number" name="selling_price" id="selling_price" placeholder="Selling Price" value="{{ old('selling_price') }}">
                         <span class="inline_alert">{{ $errors->first('selling_price') }}</span>
                     </div>
-                </div>
-            </fieldset>
 
-            <fieldset>
-                <legend>Discounts (Enter either)</legend>
-
-                <div class="row_input_group">
                     <div class="input_group">
                         <label for="discount_amount">Discount Amount</label>
-                        <input type="number" name="discount_amount" id="discount_amount" placeholder="Discount Amount" value="{{ old('discount_amount', 0.00) }}">
+                        <input type="number" name="discount_amount" id="discount_amount" placeholder="Discount Amount" value="{{ old('discount_amount', 0) }}">
                         <span class="inline_alert">{{ $errors->first('discount_amount') }}</span>
                     </div>
     
