@@ -28,32 +28,32 @@ class Product extends Model
         'category_id',
     ];
 
-    public function calculate_discount()
+    public function calculated_price()
     {
-        $discountAmount = $this->discount_amount;
-        $discountPercentage = $this->discount_percentage;
-        $sellingPrice = $this->selling_price;
+        $discount_amount = $this->discount_amount;
+        $discount_percentage = $this->discount_percentage;
+        $selling_price = $this->selling_price;
+        $new_price = $selling_price;
     
-        if ($discountAmount && $discountAmount < $sellingPrice) {
+        if ($discount_amount && $discount_amount < $selling_price) {
             // Calculate the discount percentage based on the discount amount
-            $discountPercentage = ($discountAmount / $sellingPrice) * 100;
-            $this->new_price = $sellingPrice - $discountAmount;
-            $this->discount_percentage = round($discountPercentage, 0);
-        } elseif ($discountPercentage && $discountPercentage < 100) {
+            $discount_percentage = ($discount_amount / $selling_price) * 100;
+            $new_price = $selling_price - $discount_amount;
+        } elseif ($discount_percentage && $discount_percentage < 100) {
             // Calculate the discount amount based on the discount percentage
-            $discountAmount = ($discountPercentage / 100) * $sellingPrice;
-            $this->new_price = $sellingPrice - $discountAmount;
-            $this->discount_amount = $discountAmount;
+            $discount_amount = ($discount_percentage / 100) * $selling_price;
+            $new_price = $selling_price - $discount_amount;
         } else {
             // If no discount, set the new price as the regular price
-            $this->new_price = $sellingPrice;
-            $this->discount_percentage = 0;
-            $this->discount_amount = 0;
+            $discount_amount = 0;
+            $discount_percentage = 0;
         }
     
         return [
-            'discount_amount' => $this->discount_amount,
-            'discount_percentage' => $this->discount_percentage
+            'new_price' => number_format($new_price, 2),
+            'old_price' => number_format($selling_price, 2),
+            'discount_amount' => $discount_amount,
+            'discount_percentage' => round($discount_percentage, 0)
         ];
     }    
 

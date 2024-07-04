@@ -36,6 +36,12 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        // Custom validation logic for discount
+        $request->validate([
+            'discount_amount' => 'numeric|nullable',
+            'discount_percentage' => 'numeric|nullable',
+        ]);
+
         $validated = $request->validate([
             'title' => 'required|string|max:120|unique:products',
             'product_code' => 'nullable|string',
@@ -45,15 +51,38 @@ class ProductController extends Controller
             'measurement_id' => 'nullable|numeric',
             'buying_price' => 'numeric',
             'selling_price' => 'numeric',
-            'discount_amount' => 'numeric',
-            'discount_percentage' => 'numeric',
             'stock_count' => 'numeric',
             'safety_stock' => 'numeric',
             'images' => 'max:2048',
             'description' => 'nullable|string',
         ]);
 
+        // Check that only one of discount_amount or discount_percentage is entered
+        if ($request->discount_amount && $request->discount_percentage) {
+            return redirect()->back()->withErrors(['discount' => 'You can only enter either the discount amount or the discount percentage, not both.'])->withInput();
+        }
+
+        // Ensure only one is saved in the DB and values are sensible
+        if ($request->filled('discount_amount')) {
+            if($request->discount_amount > $request->selling_price) {
+                return redirect()->back()->withErrors(['discount' => 'Discount amount cannot be more than the selling price'])->withInput();
+            }
+            $validated['discount_percentage'] = 0;
+            $validated['discount_amount'] = $request->discount_amount;
+        } elseif ($request->filled('discount_percentage')) {
+            if($request->discount_percentage > 100) {
+                return redirect()->back()->withErrors(['discount' => 'Discount percentage cannot be more than 100%'])->withInput();
+            }
+            $validated['discount_amount'] = 0;
+            $validated['discount_percentage'] = $request->discount_percentage;
+        } else {
+            $validated['discount_amount'] = 0;
+            $validated['discount_percentage'] = 0;
+        }
+
         $validated['slug'] = Str::slug($validated['title']);
+
+        dd($validated);
 
         $product = Product::create($validated);
 
@@ -83,6 +112,12 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        // Custom validation logic for discount
+        $request->validate([
+            'discount_amount' => 'numeric|nullable',
+            'discount_percentage' => 'numeric|nullable',
+        ]);
+
         $validated = $request->validate([
             'title' => 'required|string|max:120|unique:products,title,' . $product->id,
             'product_code' => 'nullable|string',
@@ -92,13 +127,35 @@ class ProductController extends Controller
             'measurement_id' => 'nullable|numeric',
             'buying_price' => 'numeric',
             'selling_price' => 'numeric',
-            'discount_amount' => 'numeric',
-            'discount_percentage' => 'numeric',
             'stock_count' => 'numeric',
             'safety_stock' => 'numeric',
             'images' => 'max:2048',
             'description' => 'nullable|string',
         ]);
+
+
+        // Custom logic to check that only one of discount_amount or discount_percentage is entered
+        if ($request->discount_amount && $request->discount_percentage) {
+            return redirect()->back()->withErrors(['discount' => 'You can only enter either the discount amount or the discount percentage, not both.'])->withInput();
+        }
+
+        // Ensure only one is saved in the DB and values are sensible
+        if ($request->filled('discount_amount')) {
+            if($request->discount_amount > $request->selling_price) {
+                return redirect()->back()->withErrors(['discount' => 'Discount amount cannot be more than the selling price'])->withInput();
+            }
+            $validated['discount_percentage'] = 0;
+            $validated['discount_amount'] = $request->discount_amount;
+        } elseif ($request->filled('discount_percentage')) {
+            if($request->discount_percentage > 100) {
+                return redirect()->back()->withErrors(['discount' => 'Discount percentage cannot be more than 100%'])->withInput();
+            }
+            $validated['discount_amount'] = 0;
+            $validated['discount_percentage'] = $request->discount_percentage;
+        } else {
+            $validated['discount_amount'] = 0;
+            $validated['discount_percentage'] = 0;
+        }
 
         $validated['slug'] = Str::slug($validated['title']);
 
