@@ -39,6 +39,15 @@
             @if($product->stock_count == 0)
                 <span class="danger">sold out</span>
             @endif
+
+            @if($product->reviews->count() > 0)
+                <span class="rating">
+                    <span>
+                        <i class="fas fa-star"></i> 
+                        {{ number_format($product->average_rating(), 1) }}
+                    </span>
+                </span>
+            @endif
         </div>
         
         <div class="details">
@@ -54,12 +63,6 @@
                     @else
                         <span class="price">
                             <span class="new_price">Ksh. {{ $product->selling_price }}</span>
-                        </span>
-                    @endif
-
-                    @if($product->reviews->count() > 0)
-                        <span class="rating">
-                            <span><i class="fas fa-star"></i> {{ number_format($product->average_rating(), 1) }} ({{ $product->reviews->count() }} reviews)</span>
                         </span>
                     @endif
                 </div>
