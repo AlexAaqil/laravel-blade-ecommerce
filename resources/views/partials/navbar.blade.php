@@ -1,7 +1,7 @@
 <nav>
     <div class="brand">
         <a href="{{ route('home') }}">
-            <h1>{{ env('APP_NAME') }}</h1>
+            <span>{{ env('APP_NAME') }}</span>
         </a>
     </div>
 
@@ -10,8 +10,8 @@
             $nav_links = [
                 ['route' => 'shop', 'text' => 'Shop'],
                 ['route' => 'about', 'text' => 'About'],
-                ['route' => 'contact', 'text' => 'Contact'],
                 ['route' => 'users.blogs', 'text' => 'Blogs'],
+                ['route' => 'contact', 'text' => 'Contact'],
             ];
         @endphp
 
@@ -28,22 +28,30 @@
         @endforeach
     </div>
 
-    <div class="nav_authentication">
-        @if(Auth::user())
-            <div class="actions">
+    <div class="extra_links">
+        <div class="links">
+            <div class="shopping_cart">
+                <a href="#"> {{-- route('cart.index') --}}
+                    <i class="fas fa-shopping-cart"></i>
+                    {{-- <span>{{ count((array) session('cart')) }}</span> --}}
+                    <span>0</span>
+                </a>
+            </div>
+
+            @if(Auth::user())
                 <a href="{{ route('profile.edit') }}" class="profile">
                     <i class="fa fa-user"></i>
                 </a>
-    
+
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-    
-                    <button type="submit" class="logout_btn">Logout</button>
+
+                    <button type="submit" class="btn btn_logout">Logout</button>
                 </form>
-            </div>
-        @else
-            <a href="{{ route('login') }}" class="login_btn">Login</a>
-        @endif
+            @else
+                <a href="{{ route('login') }}" class="btn login_btn">Login</a>
+            @endif
+        </div>
     </div>
 
     <div class="burger_menu">

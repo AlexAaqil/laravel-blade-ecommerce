@@ -1,65 +1,79 @@
 nav {
-    height: 10vh;
-    display: grid;
+    display: flex;
     align-items: center;
-    grid-template-columns: 50% 1fr auto;
-    gap: 1em;
+    justify-content: space-between;
+    height: 10vh;
     padding: 15px 5%;
     position: sticky;
     top: 0;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
-    box-shadow: 4px 2px 4px #5f5f5f;
+    box-shadow: 1px 1px 24px #adadad;
     z-index: 100;
 
     a {
         text-decoration: none;
-        color: #000;
+        color: $dark_text;
     }
 
     .brand {
         a {
-            h1 {
+            span {
                 font-size: 1.2em;
+                font-weight: bold;
             }
         }
     }
 
     .nav_links {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 1.2em;
+        gap: 1.5em;
+
+        a {
+            color: darken($faded, 20);
+        }
 
         .active {
+            color: $dark_text;
             font-weight: bold;
         }
     }
 
-    .nav_authentication {
-        margin-left: 2em;
-
-        .login_btn,
-        .logout_btn {
-            color: #ededed;
-            padding: 6px 16px;
-            border-radius: 32px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .actions {
+    .extra_links {
+        .links {
             display: flex;
             align-items: center;
-            gap: 1em;
+            gap: 1.5em;
 
-            .logout_btn {
-                background: rgb(240, 6, 6);
+            .shopping_cart {
+                position: relative;
+
+                span {
+                    position: absolute;
+                    top: -0.8em;
+                    right: -0.6em;
+                    background: green;
+                    color: $light_text;
+                    border-radius: 50%;
+                    padding: 1px;
+                    width: 16px;
+                    aspect-ratio: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.75em;
+                    font-weight: bold;
+                }
             }
-        }
 
-        .login_btn {
-            background: #000;
+            .btn {
+                border-radius: 32px;
+                padding: 6px 16px;
+            }
+
+            .btn_logout {
+                background: $danger;
+            }
         }
     }
 
@@ -70,32 +84,12 @@ nav {
 
 @media screen and (width <= 726px) {
     nav {
-        grid-template-columns: 1fr auto auto auto;
-        gap: 0.5em;
+        display: grid;
+        grid-template-columns: 70% auto auto;
 
-        .nav_links {
+        .nav_links,
+        .extra_links .btn_logout {
             display: none;
-            position: absolute;
-            top: 10vh;
-            right: 0;
-            height: 50vh;
-            width: 60%;
-            padding: 0 20px;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-evenly;
-            background: rgba($color: #000000, $alpha: .75);
-            backdrop-filter: blur(5px);
-
-            a {
-                color: #fff;
-                font-size: 1.1em;
-                letter-spacing: 0.5px;
-            }
-
-            .active {
-                color: rgb(165, 248, 241);
-            }
         }
 
         .burger_menu {
@@ -112,13 +106,22 @@ nav {
                 span {
                     width: 100%;
                     height: 3px;
-                    background: #000;
+                    background: $dark_text;
                 }
             }
         }
 
         .show {
+            position: absolute;
+            top: 10vh;
+            right: 0;
             display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0.5em 1em;
+            width: 60%;
+            height: 60dvh;
+            background: lighten($faded, 50);
         }
 
         .active_burger {
