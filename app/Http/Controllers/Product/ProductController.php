@@ -64,25 +64,24 @@ class ProductController extends Controller
 
         // Ensure only one is saved in the DB and values are sensible
         if ($request->filled('discount_amount')) {
-            if($request->discount_amount > $request->selling_price) {
+            if ($request->discount_amount > $request->selling_price) {
                 return redirect()->back()->withErrors(['discount' => 'Discount amount cannot be more than the selling price'])->withInput();
             }
             $validated['discount_percentage'] = 0;
             $validated['discount_amount'] = $request->discount_amount;
         } elseif ($request->filled('discount_percentage')) {
-            if($request->discount_percentage > 100) {
+            if ($request->discount_percentage > 100) {
                 return redirect()->back()->withErrors(['discount' => 'Discount percentage cannot be more than 100%'])->withInput();
             }
             $validated['discount_amount'] = 0;
             $validated['discount_percentage'] = $request->discount_percentage;
         } else {
+            // If neither discount amount nor discount percentage is provided, ensure both are set to null
             $validated['discount_amount'] = 0;
             $validated['discount_percentage'] = 0;
         }
 
         $validated['slug'] = Str::slug($validated['title']);
-
-        dd($validated);
 
         $product = Product::create($validated);
 
@@ -136,23 +135,24 @@ class ProductController extends Controller
 
         // Custom logic to check that only one of discount_amount or discount_percentage is entered
         if ($request->discount_amount && $request->discount_percentage) {
-            return redirect()->back()->withErrors(['discount' => 'You can only enter either the discount amount or the discount percentage, not both.'])->withInput();
+            return redirect()->back()->withErrors(['discount' => 'Only enter either the discount amount or the discount percentage, not both.'])->withInput();
         }
 
         // Ensure only one is saved in the DB and values are sensible
         if ($request->filled('discount_amount')) {
-            if($request->discount_amount > $request->selling_price) {
+            if ($request->discount_amount > $request->selling_price) {
                 return redirect()->back()->withErrors(['discount' => 'Discount amount cannot be more than the selling price'])->withInput();
             }
             $validated['discount_percentage'] = 0;
             $validated['discount_amount'] = $request->discount_amount;
         } elseif ($request->filled('discount_percentage')) {
-            if($request->discount_percentage > 100) {
+            if ($request->discount_percentage > 100) {
                 return redirect()->back()->withErrors(['discount' => 'Discount percentage cannot be more than 100%'])->withInput();
             }
             $validated['discount_amount'] = 0;
             $validated['discount_percentage'] = $request->discount_percentage;
         } else {
+            // If neither discount amount nor discount percentage is provided, ensure both are set to null
             $validated['discount_amount'] = 0;
             $validated['discount_percentage'] = 0;
         }
