@@ -24,8 +24,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('stock_count')->default(0);
             $table->unsignedSmallInteger('safety_stock')->default(0);
             $table->text('description')->nullable();
-            $table->decimal('discount_amount', 10, 2)->default(0.00);
-            $table->unsignedSmallInteger('discount_percentage')->default(0);
+            $table->decimal('discount_amount', 10, 2)->nullable()->default(0.00);
+            $table->unsignedSmallInteger('discount_percentage')->nullable()->default(0);
 
             $table->foreignId('measurement_id')->nullable()->constrained('product_measurements')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('product_categories')->onDelete('set null');
