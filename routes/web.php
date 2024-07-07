@@ -13,15 +13,22 @@ use App\Http\Controllers\Product\ProductMeasurementController;
 use App\Http\Controllers\Product\ProductCategoryController;
 use App\Http\Controllers\Product\ProductImageController;
 use App\Http\Controllers\Product\ProductReviewController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
+
 Route::get('/shop', [GeneralPagesController::class, 'shop'])->name('shop');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('products.show');
+Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
+
 Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [UserMessageController::class, 'store'])->name('user-messages.store');
+
 Route::get('/blogs', [BlogController::class, 'users_blogs'])->name('users.blogs');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
+
+require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -34,8 +41,6 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/product-reviews/{product}', [ProductReviewController::class, 'create'])->name('product-reviews.create');
     Route::post('/product-reviews/{product}', [ProductReviewController::class, 'store'])->name('product-reviews.store');
 });
-
-require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'verified', 'active', 'admin'])
 ->prefix('admin')

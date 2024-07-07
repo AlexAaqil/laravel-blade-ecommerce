@@ -17,12 +17,19 @@
         @if($product->stock_count > 0)
         <div class="actions">
             <div class="action">
-                <form action="" method="POST">
+                <form method="post" action="{{ route('cart.store', $product->id) }}">
                     @csrf
 
-                    <button type="submit" title="Add to Cart">
-                        {{-- Add to cart --}}
-                        <i class="fa fa-cart-plus"></i>
+                    <button type="submit" title="Add to Cart" class="shopping_cart">
+                        @php
+                            $product_quantity = App\Http\Controllers\CartController::getProductQuantity($product->id);
+                        @endphp
+                        @if($product_quantity > 0)
+                            <i class="fa fa-cart-plus"></i>
+                            <span>{{ $product_quantity }}</span>
+                        @else
+                            <i class="fas fa-shopping-cart"></i>
+                        @endif
                     </button>
                 </form>
             </div>

@@ -33,7 +33,7 @@
             <div class="shopping_cart">
                 <a href="#"> {{-- route('cart.index') --}}
                     <i class="fas fa-shopping-cart"></i>
-                    <span>{{ count((array) session('cart')) }}</span>
+                    <span>{{ session('cart_count', 0) }}</span>
                 </a>
             </div>
 

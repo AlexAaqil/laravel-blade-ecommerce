@@ -45,27 +45,6 @@ nav {
             align-items: center;
             gap: 1.5em;
 
-            .shopping_cart {
-                position: relative;
-
-                span {
-                    position: absolute;
-                    top: -0.8em;
-                    right: -0.6em;
-                    background: green;
-                    color: $light_text;
-                    border-radius: 50%;
-                    padding: 1px;
-                    width: 16px;
-                    aspect-ratio: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 0.75em;
-                    font-weight: bold;
-                }
-            }
-
             .btn {
                 border-radius: 32px;
                 padding: 6px 16px;

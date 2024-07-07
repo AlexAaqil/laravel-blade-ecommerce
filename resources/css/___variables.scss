@@ -53,3 +53,25 @@ $container_sides_padding: 5%;
 .strike {
     text-decoration: line-through;
 }
+
+
+.shopping_cart {
+    position: relative;
+
+    span {
+        position: absolute;
+        top: -0.9em;
+        right: -0.8em;
+        width: 18px;
+        aspect-ratio: 1;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75em;
+        font-weight: bold;
+        background: green;
+        color: $light_text;
+        border-radius: 50%;
+    }
+}

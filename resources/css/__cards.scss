@@ -66,16 +66,24 @@
 
             form {
                 button {
+                    position: relative;
                     @include flex_center;
                     height: 45px;
                     width: 45px;
-                    background: $theme_1;
-                    color: $light_text;
+                    background: lighten($faded, 50);
+                    box-shadow: 2px 2px 6px $dark_text;
+                    color: $dark_text;
                     padding: 12px;
                     border-radius: 50%;
                     outline: none;
                     border: none;
                     font-size: 1.5em;
+
+                    span {
+                        font-size: 0.55em;
+                        top: -5px;
+                        right: -4px;
+                    }
                 }
             }
         }
