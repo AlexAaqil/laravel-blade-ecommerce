@@ -16,7 +16,7 @@
                                 </a>
                             </span>
 
-                            <span class="price">{{ $product['selling_price'] }}</span>
+                            <span class="price">{{ number_format($product['selling_price'], 2) }}</span>
 
                             <span class="quantity">
                                 <form method="post" action="{{ route('cart.update', ['product' => $product['id']]) }}"  class="quantity_form">
@@ -29,7 +29,7 @@
 
                             <span class="subtotal">
                                 <span>=</span>
-                                {{ $product['quantity'] * $product['selling_price'] }}
+                                {{ number_format($product['quantity'] * $product['selling_price'], 2) }}
                             </span>
 
                             <span class="delete_item">
@@ -50,7 +50,7 @@
                     <p class="title">Order Summary</p>
                     <p class="details">
                         <span>Cart Total</span>
-                        <span id="cart_total">Ksh. {{ $cart['subtotal'] }}</span>
+                        <span id="cart_total">Ksh. {{ number_format($cart['subtotal'], 2) }}</span>
                     </p>
 
                     <div class="action">
