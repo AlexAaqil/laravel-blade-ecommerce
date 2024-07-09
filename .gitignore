@@ -17,5 +17,7 @@ yarn-error.log
 /.idea
 /.vscode
 
-# remove these
+
+
+
 /notes.txt
