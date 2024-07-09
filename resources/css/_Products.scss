@@ -245,6 +245,90 @@
     }
 }
 
+.Cart {
+    .container {
+        .header {
+            margin: 0 0 1em;
+        }
+
+        .body {
+            display: grid;
+            gap: 1em 2em;
+
+            .cart_items {
+                // *{border: 1px solid grey}
+                .cart_item {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr 1fr 1fr;
+                    align-items: center;
+                    gap: 0.5em 0.5em;
+                    margin: 0 0 0.5em;
+
+                    a {
+                        text-decoration: none;
+                        color: $dark_text;
+                    }
+
+                    .quantity {
+                        form {
+                            input {
+                                margin: 0;
+                                width: 50%;
+                            }
+                        }
+                    }
+
+                    .delete_item {
+                        button {
+                            padding: 4px;
+                            background: $danger;
+                            color: $light_text;
+                        }
+                    }
+                }
+            }
+
+            .order_summary {
+                background: lighten($faded, 40);
+                padding: 8px 16px;
+                border-radius: 8px;
+
+                .title {
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    text-align: center;
+                    a {
+                        width: 100%;
+                    }
+                }
+
+                .details {
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    margin: 1.5em 0;
+
+                    span {
+                        &:last-of-type {
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .action {
+                    a {
+                        display: block;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .no_cart_items {
+            margin: 1.5em 0 2em;
+        }
+    }
+}
+
 @media screen and (width >= 726px) {
     .Product_details {
         .details_wrapper {
@@ -269,6 +353,25 @@
     .Product_reviews {
         .container {
             grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .Cart {
+        .container {
+            .body {
+                grid-template-columns: 70% auto;
+                gap: 1em;
+
+                .cart_items {
+                    .cart_item {
+                        grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+
+                        .delete_item {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
         }
     }
 }

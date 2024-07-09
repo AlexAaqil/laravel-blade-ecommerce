@@ -20,7 +20,13 @@ Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
 
 Route::get('/shop', [GeneralPagesController::class, 'shop'])->name('shop');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('products.show');
-Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{product}', [CartController::class, 'store'])->name('cart.store');
+Route::post('/cart/quantity/{product}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/destory/{product}')->name('cart.destroy');
+Route::get('/checkout')->name('checkout.index');
+Route::get('/checkout')->name('checkout.create');
 
 Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [UserMessageController::class, 'store'])->name('user-messages.store');

@@ -54,7 +54,6 @@ $container_sides_padding: 5%;
     text-decoration: line-through;
 }
 
-
 .shopping_cart {
     position: relative;
 
@@ -74,4 +73,8 @@ $container_sides_padding: 5%;
         color: $light_text;
         border-radius: 50%;
     }
+}
+
+.list_style_none {
+    list-style: none;
 }

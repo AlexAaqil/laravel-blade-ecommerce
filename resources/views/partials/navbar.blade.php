@@ -31,9 +31,9 @@
     <div class="extra_links">
         <div class="links">
             <div class="shopping_cart">
-                <a href="#"> {{-- route('cart.index') --}}
+                <a href="{{ route('cart.index') }}">
                     <i class="fas fa-shopping-cart"></i>
-                    <span>{{ session('cart_count', 0) }}</span>
+                    <span>{{ Session::get('cart_count', 0) }}</span>
                 </a>
             </div>
 
