@@ -163,15 +163,6 @@ product_reviews {
     $table->timestamps();
 }
 
-discounts {
-    $table->id();
-    $table->string('discount_code')->nullable();
-    $table->decimal('discount_amount', 10, 2)->default(0.00)->nullable();
-    $table->unsignedSmallInteger('discount_percentage')->default(0)->nullable();
-    $table->dateTime('from');
-    $table->dateTime('to');
-}
-
 sales {
     $table->id();
     $table->string('reference_number')->unique();
@@ -215,4 +206,13 @@ payments {
     $table->foreignId('sale_id')->constrained('sales')->onDelete('cascade');
     
     $table->timestamps();
+}
+
+discounts {
+    $table->id();
+    $table->string('discount_code')->nullable();
+    $table->decimal('discount_amount', 10, 2)->default(0.00)->nullable();
+    $table->unsignedSmallInteger('discount_percentage')->default(0)->nullable();
+    $table->dateTime('from');
+    $table->dateTime('to');
 }
