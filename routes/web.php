@@ -24,7 +24,7 @@ Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}', [CartController::class, 'store'])->name('cart.store');
 Route::post('/cart/quantity/{product}', [CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/destory/{product}')->name('cart.destroy');
+Route::delete('/cart/destory/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::get('/checkout')->name('checkout.index');
 Route::get('/checkout')->name('checkout.create');
 
