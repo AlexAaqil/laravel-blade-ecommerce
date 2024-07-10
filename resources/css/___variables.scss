@@ -30,6 +30,10 @@ $container_sides_padding: 5%;
     color: $success;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .center {
     text-align: center !important;
 }
@@ -73,6 +77,34 @@ $container_sides_padding: 5%;
         color: $light_text;
         border-radius: 50%;
     }
+}
+
+.price {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    .new_price {
+        color: $success;
+        font-size: 1.15em;
+    }
+
+    .old_price {
+        color: $danger;
+        font-size: 0.8em;
+        text-decoration: line-through;
+    }
+}
+
+.fa-star {
+    color: #ffd600;
+}
+
+.section_title {
+    font-weight: bold;
+    font-size: 1.35em;
+    margin: 0 0 0.5em;
 }
 
 .list_style_none {

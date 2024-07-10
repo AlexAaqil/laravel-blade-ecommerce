@@ -20,6 +20,8 @@ Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
 
 Route::get('/shop', [GeneralPagesController::class, 'shop'])->name('shop');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/search', [ProductController::class, 'products_search'])->name('products.search');
+Route::get('/products/{category}', [ProductController::class, 'products_categorized'])->name('products.categorized');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}', [CartController::class, 'store'])->name('cart.store');

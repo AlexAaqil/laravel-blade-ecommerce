@@ -223,6 +223,27 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', ['message' => 'Product has been deleted.']);
     }
 
+    public function products_search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = Product::with('category')
+        ->where('title', 'like', "%$query%")
+        ->orWhere('description', 'like', "%$query%")
+        ->get();
+
+        return view('product.search', compact('products', 'query'));
+    }
+
+    public function products_categorized($category)
+    {
+        $categories = ProductCategory::orderBy('title', 'asc')->get();
+        $category = ProductCategory::where('slug', $category)->firstOrFail();
+        $products = $category->products()->get();
+
+        return view('product.categorized', compact('products', 'category', 'categories'));
+    }
+
     private function storeProductImages(Request $request, Product $product)
     {
         $images = $request->file('images');

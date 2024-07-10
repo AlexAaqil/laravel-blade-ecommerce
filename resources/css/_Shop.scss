@@ -16,23 +16,6 @@
         }
     }
 
-    .Categories {
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4em;
-
-            a {
-                text-decoration: none;
-                background: lighten($faded, 35);
-                color: $dark_text;
-                font-size: 0.85em;
-                padding: 2px 8px;
-                border-radius: 16px;
-            }
-        }
-    }
-
     .Products {
         .container {
             @include grid(4);

@@ -23,7 +23,7 @@
 
             <div class="cards products">
                 @foreach($products as $product)
-                    @include('partials.product')
+                    @include('product.card')
                 @endforeach
             </div>
         </div>
