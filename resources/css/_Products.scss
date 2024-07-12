@@ -225,6 +225,48 @@
         }
     }
 
+    .order_summary {
+        background: lighten($faded, 40);
+        padding: 8px 16px;
+        border-radius: 8px;
+
+        .title {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            a {
+                width: 100%;
+            }
+        }
+
+        .details,
+        .total {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            margin: 1.25em 0;
+
+            span {
+                &:last-of-type {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .total {
+            grid-template-columns: auto auto;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .action {
+            a {
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+
     .Cart {
         .container {
             .header {
@@ -308,6 +350,32 @@
         }
     }
 
+    .Checkout {
+        .container {
+            display: grid;
+            gap: 1.5em 2em;
+
+            .title {
+                font-weight: bold;
+                font-size: 1.35em;
+                margin: 0.8em 0;
+            }
+
+            .user_details {
+                margin: 0 0 1em;
+
+                p {
+                    display: grid;
+                    span {
+                        &:first-of-type {
+                            color: darken($faded, 30);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .custom_form {
         .product_images {
             display: flex;
@@ -387,6 +455,18 @@
                                 text-align: center;
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        .Checkout {
+            .container {
+                grid-template-columns: 70% 1fr;
+
+                .user_details {
+                    p {
+                        grid-template-columns: 20% auto;
                     }
                 }
             }

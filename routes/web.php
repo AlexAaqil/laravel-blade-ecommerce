@@ -14,6 +14,7 @@ use App\Http\Controllers\Product\ProductCategoryController;
 use App\Http\Controllers\Product\ProductImageController;
 use App\Http\Controllers\Product\ProductReviewController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SaleController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -27,8 +28,6 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}', [CartController::class, 'store'])->name('cart.store');
 Route::post('/cart/quantity/{product}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/destory/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
-Route::get('/checkout')->name('checkout.index');
-Route::get('/checkout')->name('checkout.create');
 
 Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [UserMessageController::class, 'store'])->name('user-messages.store');
@@ -48,6 +47,9 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::get('/product-reviews/{product}', [ProductReviewController::class, 'create'])->name('product-reviews.create');
     Route::post('/product-reviews/{product}', [ProductReviewController::class, 'store'])->name('product-reviews.store');
+
+    Route::get('/checkout', [SaleController::class, 'create'])->name('checkout.create');
+    Route::post('/checkout', [SaleController::class, 'store'])->name('checkout.store');
 });
 
 Route::middleware(['auth', 'verified', 'active', 'admin'])
