@@ -15,7 +15,7 @@
             ];
         @endphp
 
-        @if(Auth::user() && Auth::user()->user_level == 1)
+        @if(Auth::user() && Auth::user()->user_level == 2)
             <a href="{{ route('dashboard') }}">Dashboard</a>
         @elseif(Auth::user() && Auth::user()->user_level == 0)
             <a href="{{ route('admin.dashboard') }}">Dashboard</a>
